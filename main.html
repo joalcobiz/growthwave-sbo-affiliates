@@ -1,0 +1,2747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowthWave Partner Network — Private Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════ */
+:root {
+  --navy:      #060f1e;
+  --navy-2:    #091526;
+  --navy-3:    #0d1c30;
+  --navy-4:    #122239;
+  --navy-5:    #182d48;
+  --blue:      #0e7dc2;
+  --blue-dim:  rgba(14,125,194,.12);
+  --blue-bdr:  rgba(14,125,194,.28);
+  --electric:  #38c6ff;
+  --elec-dim:  rgba(56,198,255,.1);
+  --elec-bdr:  rgba(56,198,255,.22);
+  --gold:      #c9a84c;
+  --gold-lt:   #e8d49a;
+  --gold-dim:  rgba(201,168,76,.1);
+  --gold-bdr:  rgba(201,168,76,.25);
+  --white:     #ffffff;
+  --offwhite:  #dde6f0;
+  --muted:     #5e7a96;
+  --muted-lt:  #7b97b2;
+  --border:    rgba(255,255,255,.065);
+  --border-md: rgba(255,255,255,.11);
+  --green:     #10b981;
+  --green-dim: rgba(16,185,129,.12);
+  --green-bdr: rgba(16,185,129,.25);
+  --font-d:    'DM Serif Display', Georgia, serif;
+  --font-b:    'DM Sans', system-ui, sans-serif;
+  --font-m:    'Space Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-b);
+  background: var(--navy);
+  color: var(--offwhite);
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grid texture */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(14,125,194,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,125,194,.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════
+   HEADER
+═══════════════════════════════ */
+.hdr {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 58px;
+  background: rgba(6,15,30,.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  z-index: 300;
+}
+.hdr-logo { font-family: var(--font-d); font-size: 18px; color: var(--white); letter-spacing: -.2px; }
+.hdr-logo b { color: var(--electric); font-weight: 400; }
+.hdr-r { display: flex; align-items: center; gap: 18px; }
+.hdr-tag {
+  font-family: var(--font-m); font-size: 8.5px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--muted);
+  border: 1px solid var(--border-md); padding: 5px 13px; border-radius: 20px;
+}
+.hdr-btn {
+  font-family: var(--font-b); font-size: 12.5px; font-weight: 600;
+  color: var(--navy); background: var(--electric);
+  padding: 8px 22px; border-radius: 6px; border: none;
+  cursor: pointer; transition: all .18s; letter-spacing: .1px;
+}
+.hdr-btn:hover { background: var(--white); transform: translateY(-1px); }
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 120px 48px 96px;
+  position: relative; text-align: center; overflow: hidden;
+  z-index: 1;
+}
+.hero-orb-1 {
+  position: absolute; top: 8%; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 600px;
+  background: radial-gradient(ellipse at center, rgba(14,125,194,.13) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-orb-2 {
+  position: absolute; bottom: 0; right: -15%;
+  width: 500px; height: 500px;
+  background: radial-gradient(ellipse, rgba(56,198,255,.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eye {
+  font-family: var(--font-m); font-size: 9px; letter-spacing: 3.5px;
+  text-transform: uppercase; color: var(--electric);
+  margin-bottom: 28px; display: flex; align-items: center; gap: 14px;
+  justify-content: center;
+  opacity: 0; animation: up .65s .1s ease forwards;
+}
+.hero-eye::before, .hero-eye::after {
+  content: ''; width: 36px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--electric));
+  opacity: .5;
+}
+.hero-eye::after { transform: scaleX(-1); }
+.hero-h1 {
+  font-family: var(--font-d);
+  font-size: clamp(40px, 5.8vw, 76px);
+  color: var(--white); line-height: 1.08;
+  max-width: 860px; margin: 0 auto 22px;
+  letter-spacing: -.5px;
+  opacity: 0; animation: up .65s .22s ease forwards;
+}
+.hero-h1 i { font-style: italic; color: var(--electric); }
+.hero-h1 .g { color: var(--gold-lt); }
+.hero-p {
+  font-size: 17px; color: var(--muted-lt);
+  max-width: 560px; margin: 0 auto 44px;
+  line-height: 1.85; font-weight: 400;
+  opacity: 0; animation: up .65s .34s ease forwards;
+}
+.hero-pills {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 52px;
+  opacity: 0; animation: up .65s .46s ease forwards;
+}
+.pill {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 500; color: var(--offwhite);
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border-md);
+  padding: 7px 16px; border-radius: 20px;
+}
+.pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.hero-actions {
+  display: flex; gap: 14px; align-items: center; justify-content: center;
+  opacity: 0; animation: up .65s .58s ease forwards;
+}
+.btn-p {
+  font-family: var(--font-b); font-size: 14px; font-weight: 700;
+  color: var(--navy); background: var(--electric);
+  padding: 16px 38px; border-radius: 7px; border: none;
+  cursor: pointer; transition: all .18s; letter-spacing: .1px;
+}
+.btn-p:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(56,198,255,.22); }
+.btn-g {
+  font-family: var(--font-b); font-size: 14px; font-weight: 500;
+  color: var(--muted-lt); background: transparent;
+  padding: 16px 28px; border-radius: 7px;
+  border: 1px solid var(--border-md); cursor: pointer; transition: all .18s;
+}
+.btn-g:hover { color: var(--white); border-color: rgba(255,255,255,.22); }
+.scroll-cue {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  opacity: 0; animation: up .65s 1.1s ease forwards; z-index: 1;
+}
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--muted)); }
+.scroll-txt { font-family: var(--font-m); font-size: 7.5px; letter-spacing: 2.5px; color: var(--muted); text-transform: uppercase; }
+
+/* ═══════════════════════════════
+   STATS BAR
+═══════════════════════════════ */
+.stats-bar {
+  background: var(--navy-3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0; display: flex; position: relative; z-index: 1;
+}
+.stat {
+  flex: 1; padding: 26px 20px; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: var(--font-d); font-size: 34px;
+  color: var(--electric); line-height: 1; margin-bottom: 7px; display: block;
+}
+.stat-l { font-family: var(--font-m); font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+
+/* ═══════════════════════════════
+   SHARED SECTION PARTS
+═══════════════════════════════ */
+.sec { padding: 96px 48px; position: relative; z-index: 1; }
+.sec.alt { background: var(--navy-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.inner { max-width: 1080px; margin: 0 auto; }
+.lede {
+  display: flex; flex-direction: column; gap: 4px;
+  margin-bottom: 56px;
+}
+.eye {
+  font-family: var(--font-m); font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--blue);
+  display: flex; align-items: center; gap: 10px;
+}
+.eye::after { content: ''; width: 32px; height: 1px; background: var(--blue); opacity: .45; }
+.sh2 {
+  font-family: var(--font-d);
+  font-size: clamp(26px, 3.2vw, 44px);
+  color: var(--white); line-height: 1.15; letter-spacing: -.3px;
+  max-width: 640px;
+}
+.sp {
+  font-size: 15px; color: var(--muted-lt); line-height: 1.85;
+  max-width: 560px; margin-top: 10px;
+}
+
+/* ── SVG ICON WRAPPER ── */
+.ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 10px;
+  border: 1px solid var(--border-md);
+  flex-shrink: 0;
+}
+.ico svg { width: 20px; height: 20px; }
+.ico.blue { background: var(--blue-dim); border-color: var(--blue-bdr); color: var(--electric); }
+.ico.gold { background: var(--gold-dim); border-color: var(--gold-bdr); color: var(--gold-lt); }
+.ico.green { background: var(--green-dim); border-color: var(--green-bdr); color: var(--green); }
+.ico.subtle { background: rgba(255,255,255,.04); color: var(--muted-lt); }
+
+/* ── SMALL INLINE ICON ── */
+.ico-sm {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  flex-shrink: 0;
+}
+.ico-sm svg { width: 14px; height: 14px; }
+.ico-sm.blue { background: var(--blue-dim); border: 1px solid var(--blue-bdr); color: var(--electric); }
+.ico-sm.green { background: var(--green-dim); border: 1px solid var(--green-bdr); color: var(--green); }
+
+/* ═══════════════════════════════
+   THE OPPORTUNITY — PROBLEM/SOLUTION
+═══════════════════════════════ */
+.opp-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px; margin-bottom: 36px;
+}
+.opp-card {
+  background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px 22px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.opp-stat {
+  font-family: var(--font-d); font-size: 44px;
+  color: var(--electric); line-height: 1;
+}
+.opp-title { font-size: 14px; font-weight: 700; color: var(--white); }
+.opp-body { font-size: 12.5px; color: var(--muted-lt); line-height: 1.75; flex: 1; }
+.opp-src { font-family: var(--font-m); font-size: 8px; letter-spacing: .5px; color: var(--muted); margin-top: auto; }
+
+.callout {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: rgba(201,168,76,.07);
+  border: 1px solid var(--gold-bdr);
+  border-left: 3px solid var(--gold);
+  border-radius: 12px; padding: 20px 24px;
+}
+.callout-txt { font-size: 14px; color: var(--offwhite); line-height: 1.75; }
+.callout-txt strong { color: var(--white); }
+
+/* ═══════════════════════════════
+   WHO THIS IS FOR — PERSONAS
+═══════════════════════════════ */
+.persona-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.pc {
+  background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px 22px;
+  transition: all .22s; position: relative; overflow: hidden;
+}
+.pc::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--blue), var(--electric));
+  opacity: 0; transition: opacity .22s;
+}
+.pc:hover { border-color: var(--blue-bdr); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+.pc:hover::before { opacity: 1; }
+.pc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.pc-title { font-size: 14.5px; font-weight: 700; color: var(--white); }
+.pc-sub { font-family: var(--font-m); font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-top: 2px; }
+.pc-body { font-size: 12.5px; color: var(--muted-lt); line-height: 1.75; margin-bottom: 16px; }
+.pc-hook {
+  font-size: 12px; color: var(--offwhite); line-height: 1.65;
+  padding: 12px 14px; background: rgba(14,125,194,.08);
+  border: 1px solid var(--blue-bdr); border-radius: 8px;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════
+   HOW IT WORKS — STEPS
+═══════════════════════════════ */
+.steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+}
+.step {
+  padding: 32px 24px; border-right: 1px solid var(--border);
+  position: relative;
+}
+.step:last-child { border-right: none; }
+.step-n {
+  font-family: var(--font-d); font-size: 56px;
+  color: rgba(14,125,194,.15); line-height: 1; margin-bottom: 14px;
+}
+.step-title { font-size: 13.5px; font-weight: 700; color: var(--white); margin: 12px 0 8px; }
+.step-body { font-size: 12px; color: var(--muted-lt); line-height: 1.8; }
+.step-arrow {
+  position: absolute; top: 34px; right: -10px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--navy-4); border: 1px solid var(--blue-bdr);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2; color: var(--electric);
+}
+.step-arrow svg { width: 10px; height: 10px; }
+.step:last-child .step-arrow { display: none; }
+
+/* ═══════════════════════════════
+   BEFORE / AFTER COMPARISON
+═══════════════════════════════ */
+.bva {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 0; background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden; margin-top: 8px;
+}
+.bva-col { padding: 28px 26px; }
+.bva-col.before { background: rgba(239,68,68,.04); border-right: none; }
+.bva-col.after { background: rgba(16,185,129,.04); }
+.bva-divider {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 4px; background: var(--navy-3);
+  border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+}
+.vs-badge {
+  font-family: var(--font-d); font-size: 14px; color: var(--muted);
+  writing-mode: vertical-rl; letter-spacing: 4px;
+}
+.bva-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+}
+.bva-head-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+.bva-head-label.red { color: #ef4444; }
+.bva-head-label.grn { color: var(--green); }
+.bva-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 14px; font-size: 13px; color: var(--offwhite); line-height: 1.55;
+}
+.bva-row:last-child { margin-bottom: 0; }
+.bva-row .x { color: #ef4444; flex-shrink: 0; margin-top: 1px; }
+.bva-row .ck { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+.bva-row svg { width: 15px; height: 15px; }
+
+/* ═══════════════════════════════
+   EARNINGS CALCULATOR
+═══════════════════════════════ */
+.calc-wrap {
+  background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.calc-hdr {
+  padding: 26px 32px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+  flex-wrap: wrap;
+}
+.calc-hdr-text .h { font-family: var(--font-d); font-size: 21px; color: var(--white); }
+.calc-hdr-text .s { font-size: 12.5px; color: var(--muted-lt); margin-top: 4px; }
+.ptabs { display: flex; flex-wrap: wrap; gap: 7px; }
+.ptab {
+  font-family: var(--font-b); font-size: 11px; font-weight: 600;
+  color: var(--muted-lt); background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-md); padding: 7px 14px;
+  border-radius: 20px; cursor: pointer; transition: all .18s; white-space: nowrap;
+}
+.ptab:hover { color: var(--offwhite); }
+.ptab.on { color: var(--navy); background: var(--electric); border-color: var(--electric); }
+
+.calc-body { display: grid; grid-template-columns: 1fr 1fr; }
+.c-left { padding: 28px 30px; border-right: 1px solid var(--border); }
+.c-right { padding: 28px 30px; background: rgba(14,125,194,.03); }
+
+/* inputs */
+.ig { margin-bottom: 22px; }
+.il {
+  font-family: var(--font-m); font-size: 8.5px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 8px;
+}
+.irow { display: flex; align-items: center; gap: 8px; }
+.iunit { font-family: var(--font-m); font-size: 11px; color: var(--muted); min-width: 16px; }
+.ifield {
+  flex: 1; background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-md); border-radius: 7px;
+  padding: 11px 14px; font-family: var(--font-b);
+  font-size: 16px; font-weight: 600; color: var(--white);
+  outline: none; transition: border-color .18s;
+  -moz-appearance: textfield;
+}
+.ifield::-webkit-outer-spin-button,
+.ifield::-webkit-inner-spin-button { -webkit-appearance: none; }
+.ifield:focus { border-color: var(--blue); }
+.ihint { font-size: 11px; color: var(--muted); margin-top: 5px; font-style: italic; }
+
+/* range sliders */
+input[type=range].sl {
+  -webkit-appearance: none; width: 100%; height: 3px;
+  background: rgba(255,255,255,.1); border-radius: 3px; outline: none; margin-top: 6px;
+}
+input[type=range].sl::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 17px; height: 17px;
+  border-radius: 50%; background: var(--electric);
+  cursor: pointer; border: 2.5px solid var(--navy-3);
+  box-shadow: 0 0 0 1.5px var(--electric);
+}
+.sl-row { display: flex; justify-content: space-between; margin-top: 5px; }
+.sl-min, .sl-max { font-family: var(--font-m); font-size: 8px; color: var(--muted); }
+.sl-val { font-family: var(--font-m); font-size: 11px; color: var(--offwhite); font-weight: 700; }
+
+/* tier toggles */
+.tier-row { display: flex; gap: 8px; margin-top: 6px; }
+.tier-btn {
+  flex: 1; font-family: var(--font-b); font-size: 11.5px; font-weight: 600;
+  color: var(--muted-lt); background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-md); padding: 9px 10px;
+  border-radius: 7px; cursor: pointer; transition: all .18s;
+}
+.tier-btn.on { color: var(--navy); background: var(--electric); border-color: var(--electric); }
+
+/* result cards */
+.rcards { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-bottom: 16px; }
+.rc {
+  background: rgba(255,255,255,.04); border: 1px solid var(--border);
+  border-radius: 11px; padding: 17px 15px; transition: border-color .3s;
+}
+.rc.hi { border-color: var(--elec-bdr); background: var(--elec-dim); }
+.rc.gold { border-color: var(--gold-bdr); background: var(--gold-dim); }
+.rc-lbl {
+  font-family: var(--font-m); font-size: 8px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 7px; display: block;
+}
+.rc-val { font-family: var(--font-d); font-size: 28px; color: var(--white); line-height: 1; }
+.rc.hi .rc-val { color: var(--electric); }
+.rc.gold .rc-val { color: var(--gold-lt); }
+.rc-sub { font-size: 10.5px; color: var(--muted); margin-top: 4px; }
+
+.ann-banner {
+  background: linear-gradient(135deg, rgba(14,125,194,.13), rgba(56,198,255,.07));
+  border: 1px solid var(--blue-bdr); border-radius: 11px;
+  padding: 17px 20px; display: flex; align-items: center;
+  justify-content: space-between; gap: 14px; margin-bottom: 14px;
+}
+.ann-txt { font-size: 13px; color: var(--offwhite); line-height: 1.55; }
+.ann-val { font-family: var(--font-d); font-size: 30px; color: var(--electric); white-space: nowrap; }
+.ann-sub { font-size: 9.5px; color: var(--muted); text-align: right; margin-top: 2px; }
+
+.expl {
+  padding: 13px 16px; background: rgba(14,125,194,.06);
+  border: 1px solid var(--blue-bdr); border-radius: 9px;
+}
+.expl-lbl { font-family: var(--font-m); font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+.expl-txt { font-size: 12px; color: var(--muted-lt); line-height: 1.7; }
+
+.calc-foot {
+  padding: 14px 30px; border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--muted); font-style: italic; line-height: 1.6;
+}
+
+/* ═══════════════════════════════
+   WHAT HAPPENS AFTER
+═══════════════════════════════ */
+.after-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.after-card {
+  background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px;
+}
+.after-card-h {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 12px;
+}
+.after-card-title { font-size: 14px; font-weight: 700; color: var(--white); }
+.after-card-body { font-size: 13px; color: var(--muted-lt); line-height: 1.8; }
+
+.timeline {
+  background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px 32px;
+  grid-column: span 2;
+}
+.tl-head {
+  font-family: var(--font-m); font-size: 8.5px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 24px;
+}
+.tl-row {
+  display: flex; gap: 0; align-items: flex-start;
+  position: relative;
+}
+.tl-row::before {
+  content: ''; position: absolute; top: 11px; left: 11px; right: 11px;
+  height: 1px; background: var(--border); z-index: 0;
+}
+.tl-item { flex: 1; text-align: center; position: relative; z-index: 1; }
+.tl-dot {
+  width: 23px; height: 23px; border-radius: 50%; margin: 0 auto 12px;
+  background: var(--navy-3); border: 1.5px solid var(--border-md);
+  display: flex; align-items: center; justify-content: center;
+}
+.tl-dot svg { width: 10px; height: 10px; color: var(--muted); }
+.tl-item.done .tl-dot { background: var(--blue); border-color: var(--blue); box-shadow: 0 0 10px rgba(14,125,194,.4); }
+.tl-item.done .tl-dot svg { color: var(--white); }
+.tl-period { font-family: var(--font-m); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.tl-label { font-size: 12px; font-weight: 600; color: var(--offwhite); line-height: 1.4; }
+
+/* ═══════════════════════════════
+   DASHBOARD
+═══════════════════════════════ */
+#dash-sec { display: none; }
+#dash-sec.on { display: block; }
+
+.dash-wrap {
+  background: var(--navy-3); border: 1px solid var(--border);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.dash-hdr {
+  padding: 22px 32px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.dash-greet { font-family: var(--font-d); font-size: 22px; color: var(--white); }
+.dash-badge {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-m); font-size: 8.5px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--electric);
+  background: var(--elec-dim); border: 1px solid var(--elec-bdr);
+  padding: 7px 14px; border-radius: 20px;
+}
+.dash-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--electric); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+
+.dash-kpis { display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 1px solid var(--border); }
+.dk { padding: 22px 26px; border-right: 1px solid var(--border); }
+.dk:last-child { border-right: none; }
+.dk-lbl { font-family: var(--font-m); font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.dk-val { font-family: var(--font-d); font-size: 32px; color: var(--white); line-height: 1; }
+.dk-val.b { color: var(--electric); }
+.dk-val.g { color: var(--green); }
+.dk-val.gold { color: var(--gold-lt); }
+.dk-sub { font-size: 10.5px; color: var(--muted); margin-top: 5px; }
+
+.dash-body { display: grid; grid-template-columns: 3fr 2fr; }
+.dash-col { padding: 26px 30px; border-right: 1px solid var(--border); }
+.dash-col:last-child { border-right: none; }
+.dash-col-h { font-family: var(--font-m); font-size: 8.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 18px; }
+
+.ref-table { width: 100%; border-collapse: collapse; }
+.ref-table th {
+  font-family: var(--font-m); font-size: 7.5px; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--muted); text-align: left;
+  padding: 0 0 10px; border-bottom: 1px solid var(--border);
+}
+.ref-table td {
+  padding: 11px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px; color: var(--offwhite); vertical-align: middle;
+}
+.ref-table tr:last-child td { border-bottom: none; }
+.sp-pill {
+  font-family: var(--font-m); font-size: 7.5px; letter-spacing: .8px;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 10px; font-weight: 700;
+}
+.sp-active { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-bdr); }
+.sp-analysis { background: var(--gold-dim); color: var(--gold-lt); border: 1px solid var(--gold-bdr); }
+.sp-review { background: var(--blue-dim); color: var(--electric); border: 1px solid var(--blue-bdr); }
+.earn-v { color: var(--green); font-weight: 700; }
+
+/* mini bar chart */
+.bars { display: flex; gap: 5px; align-items: flex-end; height: 72px; margin-bottom: 16px; }
+.bw { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+.b { width: 100%; background: rgba(14,125,194,.28); border-radius: 3px 3px 0 0; min-height: 3px; }
+.b.cur { background: var(--electric); }
+.b-lbl { font-family: var(--font-m); font-size: 7px; color: var(--muted); text-transform: uppercase; }
+
+/* dash refer form */
+.dash-form { margin-top: 18px; }
+.df { margin-bottom: 8px; }
+.dinput, .dsel {
+  width: 100%; background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-md); border-radius: 7px;
+  padding: 10px 13px; font-family: var(--font-b);
+  font-size: 13px; color: var(--white); outline: none;
+  transition: border-color .18s;
+}
+.dinput::placeholder { color: var(--muted); }
+.dinput:focus, .dsel:focus { border-color: var(--blue); }
+.dsel { cursor: pointer; background: rgba(6,15,30,.8); }
+.dsel option { background: var(--navy-3); color: var(--offwhite); }
+.dsub {
+  width: 100%; margin-top: 6px; padding: 11px;
+  background: linear-gradient(135deg, var(--blue), var(--electric));
+  color: var(--white); font-family: var(--font-b); font-size: 13px; font-weight: 700;
+  border: none; border-radius: 7px; cursor: pointer; transition: opacity .18s;
+}
+.dsub:hover { opacity: .85; }
+
+/* ═══════════════════════════════
+   TWO-STEP CTA
+═══════════════════════════════ */
+.cta-sec {
+  background: linear-gradient(160deg, var(--navy-4) 0%, var(--navy-2) 100%);
+  border-top: 1px solid var(--border);
+  padding: 96px 48px; text-align: center;
+  position: relative; overflow: hidden; z-index: 1;
+}
+.cta-sec::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 900px; height: 500px;
+  background: radial-gradient(ellipse, rgba(14,125,194,.12) 0%, transparent 62%);
+  pointer-events: none;
+}
+.cta-eye { font-family: var(--font-m); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--electric); margin-bottom: 18px; position: relative; z-index: 1; }
+.cta-h { font-family: var(--font-d); font-size: clamp(30px, 4vw, 56px); color: var(--white); line-height: 1.12; letter-spacing: -.4px; margin-bottom: 14px; position: relative; z-index: 1; }
+.cta-p { font-size: 16px; color: var(--muted-lt); line-height: 1.8; margin-bottom: 52px; max-width: 520px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+
+.icard {
+  max-width: 520px; margin: 0 auto;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border-md);
+  border-radius: 16px; padding: 34px 30px; text-align: left;
+  position: relative; z-index: 1;
+}
+.icard-h { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+.icard-s { font-size: 13px; color: var(--muted-lt); margin-bottom: 26px; }
+.fg { margin-bottom: 15px; }
+.fl { font-family: var(--font-m); font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 7px; }
+.fi {
+  width: 100%; background: rgba(255,255,255,.05);
+  border: 1px solid var(--border-md); border-radius: 7px;
+  padding: 12px 14px; font-family: var(--font-b); font-size: 14px;
+  color: var(--white); outline: none; transition: border-color .18s;
+}
+.fi::placeholder { color: var(--muted); }
+.fi:focus { border-color: var(--blue); }
+select.fi { cursor: pointer; background: rgba(6,15,30,.85); }
+select.fi option { background: var(--navy-3); color: var(--offwhite); }
+.fsub {
+  width: 100%; margin-top: 20px; padding: 15px;
+  background: var(--electric); color: var(--navy);
+  font-family: var(--font-b); font-size: 14px; font-weight: 700;
+  border: none; border-radius: 7px; cursor: pointer; transition: all .18s;
+}
+.fsub:hover { background: var(--white); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(56,198,255,.22); }
+
+/* step 2 */
+#step2 { display: none; position: relative; z-index: 1; }
+#step2.on { display: block; animation: up .45s ease forwards; }
+
+.cal-card {
+  max-width: 520px; margin: 0 auto;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border-md);
+  border-radius: 16px; padding: 34px 30px; text-align: left;
+}
+.cal-confirm {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--green-dim); border: 1px solid var(--green-bdr);
+  border-radius: 9px; padding: 14px 16px; margin-bottom: 26px;
+}
+.cal-confirm-txt { font-size: 13px; color: var(--offwhite); line-height: 1.65; }
+.cal-rows { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.cal-row { display: flex; gap: 14px; align-items: flex-start; }
+.cal-row-text { font-size: 13px; color: var(--offwhite); line-height: 1.55; }
+.cal-row-label { font-family: var(--font-m); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 3px; }
+.cal-book {
+  width: 100%; padding: 16px;
+  background: linear-gradient(135deg, var(--blue), var(--electric));
+  color: var(--white); font-family: var(--font-b); font-size: 14px; font-weight: 700;
+  border: none; border-radius: 7px; cursor: pointer; transition: all .18s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.cal-book svg { width: 16px; height: 16px; }
+.cal-book:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 10px 32px rgba(14,125,194,.3); }
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer {
+  background: var(--navy); border-top: 1px solid var(--border);
+  padding: 24px 48px; display: flex; align-items: center;
+  justify-content: space-between; z-index: 1; position: relative;
+}
+footer .logo { font-family: var(--font-d); font-size: 16px; color: var(--muted); }
+footer .logo b { color: var(--blue); font-weight: 400; }
+footer .copy { font-family: var(--font-m); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: rgba(94,122,150,.4); }
+
+/* ═══════════════════════════════
+   ANIMATIONS
+═══════════════════════════════ */
+@keyframes up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+
+/* ─ RESPONSIVE ─ */
+/* ═══════════════════════════════
+   LIVE DEMO WIDGET
+═══════════════════════════════ */
+.demo-frame {
+  background: var(--navy-3);
+  border: 1px solid var(--border-md);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 72px rgba(0,0,0,.55);
+}
+.demo-topbar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 18px;
+  background: var(--navy-4);
+  border-bottom: 1px solid var(--border);
+}
+.demo-topbar-label {
+  font-family: var(--font-m); font-size: 8.5px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted); white-space: nowrap; flex-shrink: 0;
+}
+.demo-city-btns { display: flex; gap: 7px; flex-wrap: wrap; }
+.dcity-btn {
+  font-family: var(--font-b); font-size: 11.5px; font-weight: 600;
+  color: var(--muted-lt); background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-md); padding: 6px 14px;
+  border-radius: 20px; cursor: pointer; transition: all .18s; white-space: nowrap;
+}
+.dcity-btn:hover { color: var(--offwhite); border-color: rgba(255,255,255,.2); }
+.dcity-btn.on { color: var(--navy); background: var(--electric); border-color: var(--electric); }
+
+/* Authentic Google white autocomplete UI */
+.ac-browser-bar {
+  background: #f1f3f4; padding: 8px 12px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.ac-dots { display: flex; gap: 4px; }
+.ac-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ac-url {
+  flex: 1; background: #fff; border-radius: 10px;
+  padding: 4px 12px; font-size: 11px; color: #555;
+  border: 1px solid #e0e0e0; text-align: center;
+  font-family: var(--font-b); overflow: hidden;
+  white-space: nowrap; text-overflow: ellipsis;
+}
+.ac-search-area { background: #fff; padding: 20px 16px 0; }
+.ac-glogo {
+  font-size: 22px; font-weight: 900; text-align: center;
+  margin-bottom: 12px; letter-spacing: -1px; line-height: 1;
+}
+.ac-g  { color: #4285F4; } .ac-o1 { color: #EA4335; }
+.ac-o2 { color: #FBBC05; } .ac-e  { color: #34A853; }
+.ac-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border: 1.5px solid #4285F4;
+  border-radius: 24px; background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.10);
+}
+.ac-icon { display: flex; align-items: center; }
+.ac-typing {
+  font-size: 14px; color: #202124; flex: 1;
+  font-family: var(--font-b); min-height: 18px;
+}
+.cursor {
+  display: inline-block; width: 2px; height: 14px;
+  background: #202124; margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.ac-results {
+  background: #fff;
+  border: 1px solid #e0e0e0; border-top: none;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden; margin-top: 4px;
+  opacity: 0;
+  transition: opacity .25s;
+}
+.ac-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px; font-size: 13px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer; font-family: var(--font-b);
+}
+.ac-row:last-child { border-bottom: none; }
+.ac-row:hover { background: #f8f9fa; }
+.highlight-row { background: #fffbf0; border-left: 3px solid #c9a84c; }
+.highlight-row:hover { background: #fff7e0; }
+.muted-row { color: #888; }
+.ac-search-icon { display: flex; align-items: center; flex-shrink: 0; }
+.ac-text { flex: 1; }
+.ac-badge {
+  font-size: 8px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; background: #c9a84c;
+  color: #060f1e; padding: 2px 8px; border-radius: 20px; white-space: nowrap;
+}
+.ac-biz-thumb {
+  width: 28px; height: 28px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+
+/* SERP mockup */
+.serp-mockup {
+  background: #fff;
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.serp-mockup.serp-visible { opacity: 1; transform: translateY(0); }
+.serp-header {
+  background: #f1f3f4; padding: 8px 12px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.serp-search-bar {
+  flex: 1; background: #fff; border-radius: 18px;
+  padding: 6px 14px; font-size: 12px; color: #202124;
+  border: 1px solid #dfe1e5;
+  display: flex; align-items: center; gap: 7px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  font-family: var(--font-b);
+}
+.serp-body { display: grid; grid-template-columns: 1fr 240px; min-height: 280px; }
+.serp-left { padding: 14px 16px; border-right: 1px solid #efefef; }
+.serp-right { padding: 12px; background: #fafafa; }
+.serp-ad-placeholder {
+  background: #f9f9f9; border: 1px dashed #d0ccc4;
+  border-radius: 8px; padding: 10px 12px; margin-bottom: 12px;
+}
+.serp-ad-placeholder-label {
+  font-size: 9px; font-weight: 700; color: #aaa;
+  text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px;
+}
+.serp-ad-placeholder-slots { display: flex; flex-direction: column; gap: 6px; margin-bottom: 7px; }
+.serp-ad-slot { height: 13px; background: #ebebeb; border-radius: 4px; }
+.serp-ad-slot:last-child { width: 70%; }
+.serp-ad-placeholder-note { font-size: 9px; color: #aaa; font-style: italic; line-height: 1.4; }
+.serp-org { margin-bottom: 14px; }
+.serp-org-url-row { display: flex; align-items: center; gap: 5px; margin-bottom: 2px; }
+.serp-org-dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 6px; font-weight: 800; flex-shrink: 0;
+}
+.serp-org-url-txt { font-size: 10px; color: #555; font-family: var(--font-b); }
+.serp-org-title {
+  font-size: 14px; color: #1a0dab; font-weight: 600;
+  margin-bottom: 2px; font-family: var(--font-b);
+}
+.serp-org-desc { font-size: 11px; color: #545454; line-height: 1.5; font-family: var(--font-b); }
+.free-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #e8f5ef; color: #1a6b4a;
+  font-size: 9px; font-weight: 700; padding: 2px 8px;
+  border-radius: 20px; margin-left: 4px; border: 1px solid #b8dece;
+  vertical-align: middle;
+}
+.free-pill svg { flex-shrink: 0; }
+.charged-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #fff8e6; color: #b35a00;
+  font-size: 9px; font-weight: 700; padding: 2px 8px;
+  border-radius: 20px; margin-left: 4px; border: 1px solid #f6d580;
+  vertical-align: middle;
+}
+.charged-pill svg { flex-shrink: 0; }
+.serp-kp {
+  background: #fff; border: 1px solid #e0e0e0;
+  border-radius: 10px; padding: 12px; overflow: hidden;
+}
+.serp-kp-img {
+  width: 100%; height: 60px; border-radius: 8px;
+  margin-bottom: 10px; display: flex; align-items: center;
+  justify-content: center; font-size: 12px; font-weight: 800;
+  color: #fff; font-family: var(--font-b); text-align: center;
+  line-height: 1.3;
+}
+.serp-kp-name { font-size: 13px; font-weight: 700; color: #202124; margin-bottom: 2px; font-family: var(--font-b); }
+.serp-kp-type { font-size: 10px; color: #666; margin-bottom: 6px; font-family: var(--font-b); }
+.serp-kp-stars { color: #f4b400; font-size: 11px; margin-bottom: 7px; font-family: var(--font-b); }
+.serp-kp-row {
+  font-size: 10px; color: #444; margin-bottom: 4px;
+  display: flex; gap: 5px; align-items: flex-start; font-family: var(--font-b);
+}
+.serp-kp-row span:first-child { min-width: 17px; flex-shrink: 0; }
+.serp-kp-btns { display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap; }
+.serp-kp-btn {
+  font-size: 9px; padding: 4px 9px;
+  border-radius: 12px; border: 1px solid #dadce0;
+  background: #fff; color: #1a73e8; cursor: pointer;
+  white-space: nowrap; font-family: var(--font-b); font-weight: 600;
+}
+.serp-free-note {
+  margin-top: 8px; padding: 6px 10px;
+  background: #e8f5ef; border-radius: 6px;
+  font-size: 9px; font-weight: 700; color: #1a6b4a;
+  font-family: var(--font-b);
+}
+.serp-legend {
+  display: flex; gap: 14px; padding: 8px 14px;
+  background: #f8f9fa; border-top: 1px solid #e8e8e8;
+  font-size: 10px; flex-wrap: wrap; align-items: center;
+  font-family: var(--font-b);
+}
+.serp-legend-item { display: flex; align-items: center; gap: 5px; color: #555; font-weight: 600; }
+
+/* Demo nav buttons */
+.demo-nav-row {
+  display: flex; border-top: 1px solid var(--border);
+}
+.dnav-btn {
+  flex: 1; padding: 12px 10px; border: none;
+  background: var(--navy-4);
+  font-family: var(--font-b); font-size: 12.5px; font-weight: 600;
+  color: var(--muted-lt); cursor: pointer; transition: all .18s;
+  border-right: 1px solid var(--border);
+}
+.dnav-btn:last-child { border-right: none; }
+.dnav-btn:hover { color: var(--offwhite); background: var(--navy-5); }
+.dnav-btn.on { background: var(--electric); color: var(--navy); font-weight: 700; }
+@keyframes pulseElec {
+  0%,100% { box-shadow: 0 0 0 0 rgba(56,198,255,.45); }
+  60%      { box-shadow: 0 0 0 8px rgba(56,198,255,0); }
+}
+.pulse-demo { animation: pulseElec 2s ease-in-out infinite; }
+
+/* ── EXPANDED SERP (Part 2) ── */
+.serp-scroll-wrap {
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.serp-scroll-wrap::-webkit-scrollbar { width: 5px; }
+.serp-scroll-wrap::-webkit-scrollbar-track { background: #f1f3f4; }
+.serp-scroll-wrap::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+.serp-body-wide {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  min-height: 520px;
+  background: #fff;
+}
+.serp-left-wide { padding: 14px 18px; border-right: 1px solid #efefef; }
+.serp-right-wide { padding: 14px 12px; background: #fafafa; }
+
+.serp-result-count { font-size: 10px; color: #888; margin-bottom: 10px; font-family: var(--font-b); }
+
+/* Featured organic result with sitelinks */
+.serp-org-featured { margin-bottom: 16px; }
+.serp-sitelinks {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6px; margin-top: 8px; margin-bottom: 4px;
+}
+.serp-sitelink {
+  padding: 6px 8px; border: 1px solid #e8e8e8;
+  border-radius: 6px; cursor: pointer;
+}
+.serp-sitelink:hover { background: #f8f9fa; }
+.sl-title { font-size: 11px; color: #1a0dab; font-weight: 600; font-family: var(--font-b); }
+.sl-url { font-size: 9px; color: #888; font-family: var(--font-b); }
+
+/* Domination callout */
+.serp-domination-callout {
+  margin: 16px 0 8px;
+  background: #e8f5ef; border: 1px solid #b8dece;
+  border-left: 3px solid #1a6b4a;
+  border-radius: 8px; padding: 12px 14px;
+}
+.sdc-inner {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 11px; color: #1a4a2e; line-height: 1.6;
+  font-family: var(--font-b);
+}
+.sdc-inner strong { color: #0d3320; }
+
+/* Wide Knowledge Panel */
+.serp-kp-wide {
+  background: #fff; border: 1px solid #e0e0e0;
+  border-radius: 10px; overflow: hidden;
+  position: sticky; top: 14px;
+}
+.serp-kp-img-wide {
+  width: 100%; height: 80px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px;
+}
+.kp-img-name {
+  font-size: 14px; font-weight: 800; color: rgba(0,0,0,.75);
+  font-family: var(--font-b); text-align: center; line-height: 1.2;
+}
+.kp-img-badge {
+  font-size: 9px; font-weight: 600; color: rgba(0,0,0,.5);
+  font-family: var(--font-b); letter-spacing: .3px;
+}
+.kp-body { padding: 12px; }
+.kp-name-row { margin-bottom: 5px; }
+.kp-name { font-size: 15px; font-weight: 700; color: #202124; font-family: var(--font-b); }
+.kp-type { font-size: 10px; color: #666; font-family: var(--font-b); }
+.kp-stars-row { display: flex; align-items: center; gap: 5px; margin-bottom: 10px; }
+.kp-stars { color: #f4b400; font-size: 12px; letter-spacing: 1px; }
+.kp-rating { font-size: 11px; font-weight: 700; color: #202124; font-family: var(--font-b); }
+.kp-rev-count { font-size: 10px; color: #1a73e8; font-family: var(--font-b); }
+.kp-open {
+  font-size: 10px; font-weight: 700; color: #188038;
+  font-family: var(--font-b); margin-left: 4px;
+}
+.kp-actions {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px; margin-bottom: 10px;
+}
+.kp-action-btn {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px; padding: 7px 4px; border: 1px solid #dadce0;
+  border-radius: 8px; cursor: pointer; font-size: 9px;
+  font-weight: 600; color: #1a73e8; font-family: var(--font-b);
+}
+.kp-action-btn:hover { background: #f8f9fa; }
+.kp-action-primary {
+  background: #1a73e8; color: #fff;
+  border-color: #1a73e8;
+}
+.kp-action-primary:hover { background: #1557b0; }
+.kp-divider { height: 1px; background: #f0f0f0; margin: 10px 0; }
+.kp-detail-row {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 11px; color: #444; margin-bottom: 7px;
+  line-height: 1.45; font-family: var(--font-b);
+}
+.kp-detail-row svg { flex-shrink: 0; margin-top: 1px; }
+.kp-photos-label { font-size: 11px; font-weight: 700; color: #202124; font-family: var(--font-b); margin-bottom: 7px; }
+.kp-photos { display: flex; gap: 5px; }
+.kp-photo { flex: 1; height: 52px; border-radius: 6px; }
+.kp-reviews-label { font-size: 11px; font-weight: 700; color: #202124; font-family: var(--font-b); margin-bottom: 8px; }
+.kp-review { margin-bottom: 10px; }
+.kp-review-stars { color: #f4b400; font-size: 10px; margin-bottom: 3px; }
+.kp-review-txt { font-size: 10px; color: #555; line-height: 1.55; font-style: italic; font-family: var(--font-b); }
+.kp-review-author { font-size: 9px; color: #888; margin-top: 3px; font-family: var(--font-b); }
+
+/* ═══════════════════════════════
+   FAQ ACCORDION
+═══════════════════════════════ */
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  border-bottom: none;
+  overflow: hidden;
+}
+.faq-item:first-child { border-radius: 12px 12px 0 0; }
+.faq-item:last-child { border-radius: 0 0 12px 12px; border-bottom: 1px solid var(--border); }
+.faq-item.open { border-color: var(--blue-bdr); }
+.faq-item.open + .faq-item { border-top-color: var(--blue-bdr); }
+
+.faq-q {
+  width: 100%; display: flex; align-items: center;
+  justify-content: space-between; gap: 16px;
+  padding: 20px 24px;
+  background: var(--navy-3);
+  border: none; cursor: pointer; text-align: left;
+  transition: background .18s;
+}
+.faq-q:hover { background: var(--navy-4); }
+.faq-item.open .faq-q { background: var(--navy-4); }
+.faq-q span {
+  font-size: 14.5px; font-weight: 600; color: var(--white);
+  line-height: 1.45; flex: 1;
+}
+.faq-ico {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(255,255,255,.06); border: 1px solid var(--border-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--muted-lt); transition: all .25s;
+}
+.faq-ico svg { width: 14px; height: 14px; transition: transform .25s; }
+.faq-item.open .faq-ico { background: var(--blue-dim); border-color: var(--blue-bdr); color: var(--electric); }
+.faq-item.open .faq-ico svg { transform: rotate(180deg); }
+
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .38s cubic-bezier(.4,0,.2,1);
+  background: var(--navy-2);
+}
+.faq-item.open .faq-a { max-height: 400px; }
+.faq-a-inner {
+  padding: 18px 24px 22px;
+  font-size: 14px; color: var(--muted-lt); line-height: 1.85;
+  border-top: 1px solid var(--border);
+}
+.faq-a-inner em { color: var(--electric); font-style: normal; font-weight: 600; }
+.faq-a-inner strong { color: var(--offwhite); }
+
+@media(max-width:960px){
+  .persona-grid,.steps,.opp-grid{grid-template-columns:1fr 1fr;}
+  .calc-body,.bva,.dash-body{grid-template-columns:1fr;}
+  .c-left{border-right:none;border-bottom:1px solid var(--border);}
+  .bva-divider{display:none;}
+  .bva-col{border-bottom:1px solid var(--border);}
+  .dash-kpis{grid-template-columns:1fr 1fr;}
+  .timeline{grid-column:span 1;}
+  .after-grid{grid-template-columns:1fr;}
+  .tl-row{flex-direction:column;gap:16px;}
+  .tl-row::before{display:none;}
+}
+@media(max-width:600px){
+  .hdr{padding:0 20px;}
+  .hdr-tag{display:none;}
+  .sec{padding:60px 20px;}
+  .persona-grid,.opp-grid{grid-template-columns:1fr;}
+  .stats-bar{flex-wrap:wrap;}
+  .stat{border-right:none;border-bottom:1px solid var(--border);}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-logo">GrowthWave<b>.</b></div>
+  <div class="hdr-r">
+    <div class="hdr-tag">Partner Network · Private</div>
+    <button class="hdr-btn" onclick="goCTA()">See Your Potential →</button>
+  </div>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-eye">Private Partner Invitation</div>
+  <h1 class="hero-h1">
+    You already own<br>
+    the <i>relationships.</i><br>
+    <span class="g">Now monetize them.</span>
+  </h1>
+  <p class="hero-p">
+    Refer business owners in your network to a Google Autocomplete program that cuts their ad cost by 50%+. You earn a recurring monthly commission — without selling, managing, or explaining a single campaign.
+  </p>
+  <div class="hero-pills">
+    <div class="pill"><div class="pill-dot"></div>Recurring monthly income</div>
+    <div class="pill"><div class="pill-dot"></div>Zero setup cost to join</div>
+    <div class="pill"><div class="pill-dot"></div>Your client saves real money</div>
+    <div class="pill"><div class="pill-dot"></div>We close — you just refer</div>
+    <div class="pill"><div class="pill-dot"></div>No contracts or minimums</div>
+  </div>
+  <div class="hero-actions">
+    <button class="btn-p" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">Calculate My Earnings</button>
+    <button class="btn-g" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How it works ↓</button>
+  </div>
+  <div class="scroll-cue">
+    <div class="scroll-line"></div>
+    <div class="scroll-txt">Scroll</div>
+  </div>
+</section>
+
+<!-- ══════════════ STATS BAR ══════════════ -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-n">70%+</span>
+    <span class="stat-l">of all Google searches use autocomplete</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">50%+</span>
+    <span class="stat-l">savings vs. standard Google PPC cost</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">15–20%</span>
+    <span class="stat-l">partner commission on client savings</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">24 hrs</span>
+    <span class="stat-l">custom savings analysis turnaround</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">100%</span>
+    <span class="stat-l">exclusive — competitors locked out</span>
+  </div>
+</div>
+
+<!-- ══════════════ LIVE DEMO ══════════════ -->
+<section class="sec" id="live-demo" style="padding-bottom: 72px;">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">See It Live</div>
+      <h2 class="sh2">Watch the autocomplete takeover happen in real time.</h2>
+      <p class="sp">This is the moment your client's business appears — before the results page even loads. Switch markets below and click through both steps.</p>
+    </div>
+
+    <!-- Demo frame — authentic white Google UI inside dark chrome -->
+    <div class="demo-frame">
+      <!-- City selector bar -->
+      <div class="demo-topbar">
+        <div class="demo-topbar-label">Market</div>
+        <div class="demo-city-btns">
+          <button class="dcity-btn on" onclick="setCity('la',this)">LA — Personal Injury</button>
+          <button class="dcity-btn" onclick="setCity('denver',this)">Denver — HVAC</button>
+          <button class="dcity-btn" onclick="setCity('miami',this)">Miami — Water Damage</button>
+        </div>
+      </div>
+
+      <!-- PART 1: Autocomplete -->
+      <div id="dp1">
+        <div style="background:#fff">
+          <!-- Browser chrome -->
+          <div class="ac-browser-bar">
+            <div class="ac-dots"><div class="ac-dot" style="background:#ff5f57"></div><div class="ac-dot" style="background:#febc2e"></div><div class="ac-dot" style="background:#28c840"></div></div>
+            <div class="ac-url" id="d-url">google.com</div>
+          </div>
+          <!-- Search area -->
+          <div class="ac-search-area">
+            <div class="ac-glogo"><span class="ac-g">G</span><span class="ac-o1">o</span><span class="ac-o2">o</span><span class="ac-g">g</span><span class="ac-e">l</span><span class="ac-o1">e</span></div>
+            <div class="ac-bar">
+              <div class="ac-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </div>
+              <div class="ac-typing" id="d-typing">personal injury lawyer los an<span class="cursor"></span></div>
+            </div>
+            <!-- Dropdown -->
+            <div class="ac-results" id="ac-drop">
+              <div class="ac-row highlight-row">
+                <div class="ac-biz-thumb" id="d-thumb" style="background:linear-gradient(135deg,#e8d49a,#c9a84c)">GK</div>
+                <div class="ac-text"><strong id="d-biz">Goldman &amp; Klein — Personal Injury LA</strong></div>
+                <div class="ac-badge">YOUR CLIENT</div>
+              </div>
+              <div class="ac-row muted-row">
+                <span class="ac-search-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+                <span class="ac-text" id="d-s1">personal injury lawyer los angeles</span>
+              </div>
+              <div class="ac-row muted-row">
+                <span class="ac-search-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+                <span class="ac-text" id="d-s2">personal injury lawyer los angeles free consultation</span>
+              </div>
+              <div class="ac-row muted-row">
+                <span class="ac-search-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+                <span class="ac-text" id="d-s3">personal injury lawyer los angeles reviews</span>
+              </div>
+              <div class="ac-row muted-row">
+                <span class="ac-search-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+                <span class="ac-text" id="d-s4">personal injury attorney los angeles</span>
+              </div>
+              <div class="ac-row muted-row">
+                <span class="ac-search-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+                <span class="ac-text" id="d-s5">best pi lawyer los angeles 2025</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 2: SERP Brand Takeover — full scroll -->
+      <div id="dp2" class="serp-mockup" style="display:none">
+        <div class="serp-header">
+          <div class="ac-dots"><div class="ac-dot" style="background:#ff5f57"></div><div class="ac-dot" style="background:#febc2e"></div><div class="ac-dot" style="background:#28c840"></div></div>
+          <div class="serp-search-bar">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <span id="d-serp-term">Goldman &amp; Klein — Personal Injury LA</span>
+          </div>
+        </div>
+
+        <!-- Scrollable SERP viewport — auto-scrolls to reveal full page domination -->
+        <div class="serp-scroll-wrap" id="serp-scroll-wrap">
+          <div class="serp-body-wide">
+
+            <!-- LEFT: organic results column -->
+            <div class="serp-left-wide">
+              <div class="serp-result-count">About 847,000 results (0.42 seconds)</div>
+
+              <!-- Sponsored placeholder -->
+              <div class="serp-ad-placeholder">
+                <div class="serp-ad-placeholder-label">Sponsored</div>
+                <div class="serp-ad-placeholder-slots">
+                  <div class="serp-ad-slot"></div><div class="serp-ad-slot"></div>
+                </div>
+                <div class="serp-ad-placeholder-note">↑ Client's existing Google Ads continue running — unchanged by the SBO program</div>
+              </div>
+
+              <!-- Organic #1 — Website -->
+              <div class="serp-org serp-org-featured">
+                <div class="serp-org-url-row">
+                  <div class="serp-org-dot" id="d-dot" style="background:#faf5e6;border:1px solid #e8d49a;color:#c9a84c">GK</div>
+                  <span class="serp-org-url-txt" id="d-org-url">goldmanklein.com › about</span>
+                </div>
+                <div class="serp-org-title" id="d-org-title">Goldman &amp; Klein — Top-Rated PI Attorneys Los Angeles</div>
+                <div class="serp-org-desc" id="d-org-desc">Award-winning PI firm. Free consultation. No fee unless we win. Serving LA County for 22 years.</div>
+                <div class="serp-sitelinks">
+                  <div class="serp-sitelink"><div class="sl-title">Free Case Review</div><div class="sl-url">goldmanklein.com/contact</div></div>
+                  <div class="serp-sitelink"><div class="sl-title">Our Attorneys</div><div class="sl-url">goldmanklein.com/team</div></div>
+                  <div class="serp-sitelink"><div class="sl-title">Recent Verdicts</div><div class="sl-url">goldmanklein.com/results</div></div>
+                  <div class="serp-sitelink"><div class="sl-title">Practice Areas</div><div class="sl-url">goldmanklein.com/services</div></div>
+                </div>
+                <span class="charged-pill" style="margin-left:0;margin-top:8px;display:inline-flex"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Charged only when clicked</span>
+              </div>
+
+              <!-- Organic #2 — Facebook -->
+              <div class="serp-org">
+                <div class="serp-org-url-row">
+                  <div class="serp-org-dot" style="background:#e8f1fb;border:1px solid #b8d4f8;color:#1a5fa8;font-size:6px">fb</div>
+                  <span class="serp-org-url-txt">facebook.com › <span id="d-fb">goldmanklein</span></span>
+                </div>
+                <div class="serp-org-title" id="d-fb-title">Goldman &amp; Klein | Facebook</div>
+                <div class="serp-org-desc">4.9 ★ · 1,240 followers · Personal Injury Law Firm · Recent posts, client stories, and case results.</div>
+                <span class="free-pill"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> FREE impression</span>
+              </div>
+
+              <!-- Organic #3 — Yelp -->
+              <div class="serp-org">
+                <div class="serp-org-url-row">
+                  <div class="serp-org-dot" style="background:#fff0f0;border:1px solid #f5c6c6;color:#c0392b;font-size:6px">Yp</div>
+                  <span class="serp-org-url-txt">yelp.com › biz</span>
+                </div>
+                <div class="serp-org-title" id="d-yelp">Goldman &amp; Klein — Yelp Reviews</div>
+                <div class="serp-org-desc">4.8 ★ (312 reviews) · Personal Injury · Los Angeles, CA · "Best PI firm in LA — they fought hard and won."</div>
+                <span class="free-pill"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> FREE impression</span>
+              </div>
+
+              <!-- Organic #4 — LinkedIn -->
+              <div class="serp-org">
+                <div class="serp-org-url-row">
+                  <div class="serp-org-dot" style="background:#e8f2fb;border:1px solid #b0d0f0;color:#0a66c2;font-size:6px">in</div>
+                  <span class="serp-org-url-txt">linkedin.com › company</span>
+                </div>
+                <div class="serp-org-title" id="d-li">Goldman &amp; Klein LLP | LinkedIn</div>
+                <div class="serp-org-desc">Personal Injury Law · Los Angeles · 48 employees · 3,100+ followers. Award-winning trial attorneys.</div>
+                <span class="free-pill"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> FREE impression</span>
+              </div>
+
+              <!-- Organic #5 — Avvo / Legal directory -->
+              <div class="serp-org">
+                <div class="serp-org-url-row">
+                  <div class="serp-org-dot" style="background:#f0f4ff;border:1px solid #c0ccf8;color:#3b4fa8;font-size:6px">Av</div>
+                  <span class="serp-org-url-txt">avvo.com › attorneys</span>
+                </div>
+                <div class="serp-org-title" id="d-av">Goldman &amp; Klein — Avvo Rating 10.0 Superb</div>
+                <div class="serp-org-desc">Top rated Personal Injury attorney in Los Angeles. 10.0 Superb rating. 180+ client reviews.</div>
+                <span class="free-pill"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> FREE impression</span>
+              </div>
+
+              <!-- Organic #6 — Google Reviews snippet -->
+              <div class="serp-org">
+                <div class="serp-org-url-row">
+                  <div class="serp-org-dot" style="background:#fff8e6;border:1px solid #f6d580;color:#b35a00;font-size:6px">G</div>
+                  <span class="serp-org-url-txt">google.com › maps › place</span>
+                </div>
+                <div class="serp-org-title">Goldman &amp; Klein — Google Maps &amp; Reviews</div>
+                <div class="serp-org-desc">4.9 ★ (847 Google reviews) · Personal Injury Attorney · Open · 350 S Grand Ave, Los Angeles</div>
+                <span class="free-pill"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> FREE impression</span>
+              </div>
+
+              <!-- Domination callout -->
+              <div class="serp-domination-callout">
+                <div class="sdc-inner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a6b4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <span><strong>Every result on this page belongs to your client.</strong> One search term. Zero competitors. The entire first page — organic results, Knowledge Panel, Maps, reviews, social — all one business.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: expanded Knowledge Panel -->
+            <div class="serp-right-wide">
+              <div class="serp-kp-wide">
+                <!-- Header image / brand color -->
+                <div class="serp-kp-img-wide" id="d-kp-img" style="background:linear-gradient(135deg,#e8d49a,#c9a84c)">
+                  <div class="kp-img-name" id="d-kp-name">Goldman &amp; Klein LLP</div>
+                  <div class="kp-img-badge">Personal Injury Attorneys</div>
+                </div>
+
+                <!-- Core info -->
+                <div class="kp-body">
+                  <div class="kp-name-row">
+                    <div class="kp-name" id="d-kp-name2">Goldman &amp; Klein LLP</div>
+                    <div class="kp-type" id="d-kp-type">Personal Injury Attorney · Los Angeles</div>
+                  </div>
+                  <div class="kp-stars-row">
+                    <span class="kp-stars">★★★★★</span>
+                    <span class="kp-rating">4.9</span>
+                    <span class="kp-rev-count">(847 reviews)</span>
+                    <span class="kp-open">Open now</span>
+                  </div>
+
+                  <!-- Action buttons -->
+                  <div class="kp-actions">
+                    <div class="kp-action-btn kp-action-primary">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.35 2 2 0 0 1 3.53 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.4a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                      Call
+                    </div>
+                    <div class="kp-action-btn">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Directions
+                    </div>
+                    <div class="kp-action-btn">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                      Website
+                    </div>
+                    <div class="kp-action-btn">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                      Save
+                    </div>
+                  </div>
+
+                  <div class="kp-divider"></div>
+
+                  <!-- Details -->
+                  <div class="kp-detail-row">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="d-addr">350 S Grand Ave, Los Angeles, CA 90071</span>
+                  </div>
+                  <div class="kp-detail-row">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.35 2 2 0 0 1 3.53 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.4a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>(213) 555-0182</span>
+                  </div>
+                  <div class="kp-detail-row">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span><span style="color:#188038;font-weight:700">Open 24/7</span> · Personal Injury · Free consultations</span>
+                  </div>
+                  <div class="kp-detail-row">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <span style="color:#1a73e8">goldmanklein.com</span>
+                  </div>
+
+                  <div class="kp-divider"></div>
+
+                  <!-- Photos strip -->
+                  <div class="kp-photos-label">Photos</div>
+                  <div class="kp-photos">
+                    <div class="kp-photo" style="background:linear-gradient(135deg,#e8d49a,#c9a84c);"></div>
+                    <div class="kp-photo" style="background:linear-gradient(135deg,#b8d4f8,#1a5fa8);"></div>
+                    <div class="kp-photo" style="background:linear-gradient(135deg,#d4f8b8,#2d8a4a);"></div>
+                  </div>
+
+                  <div class="kp-divider"></div>
+
+                  <!-- Review snippet -->
+                  <div class="kp-reviews-label">Reviews <span style="color:#aaa;font-weight:400">· 847 reviews</span></div>
+                  <div class="kp-review">
+                    <div class="kp-review-stars" style="display:flex;gap:1px"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="kp-review-txt">"They handled everything professionally. Won my case and got me 3x what I expected. Highly recommend."</div>
+                    <div class="kp-review-author">— Maria R., 2 weeks ago</div>
+                  </div>
+                  <div class="kp-review">
+                    <div class="kp-review-stars" style="display:flex;gap:1px"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="10" height="10" viewBox="0 0 24 24" fill="#f4b400" stroke="#f4b400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="kp-review-txt">"Best PI attorneys in LA. Fought the insurance company and won. Zero stress on my end."</div>
+                    <div class="kp-review-author">— James T., 1 month ago</div>
+                  </div>
+
+                  <div class="kp-divider"></div>
+                  <div class="serp-free-note" style="margin-top:0">↑ Knowledge Panel · Maps · Reviews — all FREE. Client only pays for website clicks.</div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /serp-body-wide -->
+        </div><!-- /serp-scroll-wrap -->
+
+        <div class="serp-legend">
+          <span class="serp-legend-item"><span class="free-pill" style="margin-left:0"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> FREE</span> Knowledge Panel · Maps · Reviews · Social · All directory impressions</span>
+          <span class="serp-legend-item"><span class="charged-pill" style="margin-left:0"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Charged</span> Only when searcher clicks a website link</span>
+        </div>
+      </div>
+
+      <!-- Step nav -->
+      <div class="demo-nav-row">
+        <button class="dnav-btn on" id="dnb1" onclick="showPart(1)">① Autocomplete Appears</button>
+        <button class="dnav-btn pulse-demo" id="dnb2" onclick="showPart(2)">② Click → Full Brand Takeover →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ THE OPPORTUNITY ══════════════ -->
+<section class="sec alt" id="opportunity">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">The Problem You Can Solve</div>
+      <h2 class="sh2">Your clients are overpaying for Google — and most don't know there's an alternative.</h2>
+      <p class="sp">70% of all searches begin with autocomplete suggestions, yet 95% of businesses pay full Google PPC rates while that channel goes completely untapped.</p>
+    </div>
+
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="ico blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="opp-stat">95%</div>
+        <div class="opp-title">Businesses Miss the Autocomplete Channel</div>
+        <div class="opp-body">Before a searcher ever reaches the results page, Google autocomplete fires — showing business names directly. Almost no local businesses occupy that position, yet it captures the highest-intent moment in the search journey.</div>
+        <div class="opp-src">Source: Google Search Behavior Research</div>
+      </div>
+      <div class="opp-card">
+        <div class="ico gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9.5c0-1.1.9-2 2-2h2a2 2 0 0 1 0 4h-2a2 2 0 0 0 0 4h2a2 2 0 0 0 2-2"/></svg>
+        </div>
+        <div class="opp-stat">$XX–$XXX</div>
+        <div class="opp-title">Average Google PPC Cost Per Click</div>
+        <div class="opp-body">Legal, medical, home services, and financial clients routinely pay $30–$200+ per click on standard Google Ads. Our autocomplete program delivers the same high-intent traffic at 50% of that rate — with zero bidding competition.</div>
+        <div class="opp-src">Source: WordStream Industry CPC Benchmarks</div>
+      </div>
+      <div class="opp-card">
+        <div class="ico subtle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="opp-stat">+40%</div>
+        <div class="opp-title">Average Wasted Spend on Junk Traffic</div>
+        <div class="opp-body">Standard Google Ads mixes high-intent buyers with bots, researchers, and comparison shoppers. Autocomplete clicks come only from users who typed a specific search term — the highest-quality traffic Google produces.</div>
+        <div class="opp-src">Source: Google Ads Performance Benchmarks</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="ico gold" style="flex-shrink:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div class="callout-txt">
+        <strong>The AI Overview problem is accelerating this.</strong> Google's AI-generated answer boxes now sit above all paid ads for many searches — consuming the traffic that businesses spent years building. Autocomplete fires <em>before</em> the results page loads, making it the only channel that completely bypasses AI Overview displacement.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ WHO THIS IS FOR ══════════════ -->
+<section class="sec alt" id="who">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">Who This Is For</div>
+      <h2 class="sh2">Built for trusted advisors with business relationships.</h2>
+      <p class="sp">You don't need to understand Google Ads. You need to know two or three business owners spending real money on advertising — and be willing to say four words: <em>"You should hear this."</em></p>
+    </div>
+
+    <div class="persona-grid">
+
+      <div class="pc">
+        <div class="pc-head">
+          <div class="ico blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <div class="pc-title">CPA / Bookkeeper</div>
+            <div class="pc-sub">Tax & Financial Advisory</div>
+          </div>
+        </div>
+        <div class="pc-body">You see your clients' P&Ls every quarter. You know exactly who spends heavily on Google Ads and whether the return is there. An introduction from their accountant carries authority no salesperson can replicate.</div>
+        <div class="pc-hook">"I was reviewing your marketing expenses — saw the Google spend. There's a program cutting that cost significantly for businesses like yours. Worth 20 minutes?"</div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head">
+          <div class="ico blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <div class="pc-title">Business Coach / Consultant</div>
+            <div class="pc-sub">Operations & Growth Advisory</div>
+          </div>
+        </div>
+        <div class="pc-body">Your clients trust your judgment on growth and efficiency. Reducing a major recurring cost line while maintaining — or improving — marketing performance is the kind of win that deepens your relationship and earns the referral.</div>
+        <div class="pc-hook">"Before we talk about scaling ad spend this quarter — have you heard of this autocomplete approach? It's cutting Google costs 50%+ for businesses in your space."</div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head">
+          <div class="ico blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="pc-title">Attorney / Legal Professional</div>
+            <div class="pc-sub">Business & Estate Law</div>
+          </div>
+        </div>
+        <div class="pc-body">Your business clients are frequently in the highest-CPC categories: personal injury, medical, financial services, criminal defense. These are exactly the clients who see the most dramatic savings — and who trust a referral from their lawyer.</div>
+        <div class="pc-hook">"One of my other clients in PI runs this — they cut their Google cost in half. Their CPC was $120. I immediately thought of you."</div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head">
+          <div class="ico gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <div class="pc-title">Commercial Banker / Wealth Manager</div>
+            <div class="pc-sub">Financial Services & HNW Networks</div>
+          </div>
+        </div>
+        <div class="pc-body">You manage relationships with business owners at scale across industries. One conversation about reducing a major operating cost — specifically ad spend — opens a door that most advisors never think to walk through.</div>
+        <div class="pc-hook">"This isn't an investment product — it's a cost reduction program on Google Ads specifically. The businesses I've seen it work for are similar to several of your clients."</div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head">
+          <div class="ico gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <div>
+            <div class="pc-title">Franchise Consultant</div>
+            <div class="pc-sub">Multi-Location Brand Networks</div>
+          </div>
+        </div>
+        <div class="pc-body">A single franchise group with 10 locations represents compounding recurring revenue. Each location runs its own Google Ads. You have direct relationships with franchisees and brand-level contacts that most sales teams never reach.</div>
+        <div class="pc-hook">"This program scales per location — every market you add multiplies the savings and your commission. At 10 locations the numbers get interesting fast."</div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-head">
+          <div class="ico subtle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div>
+            <div class="pc-title">Insurance Broker</div>
+            <div class="pc-sub">Commercial Lines & SMB Networks</div>
+          </div>
+        </div>
+        <div class="pc-body">You review your clients' operating costs at renewal. Google Ads is often their second or third largest expense. Most SMBs have no idea there's a program that intercepts the same high-intent traffic at a fraction of the cost — until someone like you tells them.</div>
+        <div class="pc-hook">"I help my clients reduce their biggest fixed costs — I recently came across something specific to Google Ads that's getting real results."</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BEFORE / AFTER ══════════════ -->
+<section class="sec" id="comparison">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">Before vs. After</div>
+      <h2 class="sh2">Why clients switch — and stay.</h2>
+      <p class="sp">The conversation with your referral becomes easy when they see the side-by-side. This is exactly what our sales demo walks them through.</p>
+    </div>
+
+    <div class="bva">
+      <div class="bva-col before">
+        <div class="bva-head">
+          <div class="ico-sm" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#ef4444">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="bva-head-label red">Standard Google Ads — Today</div>
+        </div>
+        <div class="bva-row">
+          <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <span>Pay $30–$200+ per click at current market rates, competing in a live auction against 5–10 advertisers simultaneously</span>
+        </div>
+        <div class="bva-row">
+          <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <span>Ads appear on the results page — below AI Overview answers that now take the top position for many searches</span>
+        </div>
+        <div class="bva-row">
+          <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <span>Mixed traffic: bots, researchers, and comparison shoppers mixed in with real buyers — no filtering by intent</span>
+        </div>
+        <div class="bva-row">
+          <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <span>No territory protection — a competitor with a bigger budget can outbid you tomorrow with no recourse</span>
+        </div>
+        <div class="bva-row">
+          <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <span>Price exposed to market fluctuations — CPCs increase as more competitors enter your industry or geography</span>
+        </div>
+      </div>
+
+      <div class="bva-divider"><div class="vs-badge">VS</div></div>
+
+      <div class="bva-col after">
+        <div class="bva-head">
+          <div class="ico-sm green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="bva-head-label grn">Autocomplete Takeover — After</div>
+        </div>
+        <div class="bva-row">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span>Pay 50% of their current CPC — price is fixed and capped. Fewer clicks means lower cost. More clicks costs nothing extra.</span>
+        </div>
+        <div class="bva-row">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span>Fires at the autocomplete stage — completely before the results page loads. AI Overview is irrelevant. Zero displacement risk.</span>
+        </div>
+        <div class="bva-row">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span>100% of searchers see one business name in the autocomplete — the client's. Google appears to recommend them personally.</span>
+        </div>
+        <div class="bva-row">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span>Terms are 100% exclusive — once locked, competitors cannot buy the same keywords in the same geography. Period.</span>
+        </div>
+        <div class="bva-row">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span>Full-page brand domination on every click: Knowledge Panel, Maps listing, reviews, social profiles — all at no extra cost.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section class="sec alt" id="how">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">The Process</div>
+      <h2 class="sh2">Four steps. Most of which we handle.</h2>
+      <p class="sp">Your only job is the introduction. After that, we run the analysis, demo, close, and onboarding. You collect a monthly check.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div class="ico blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <div class="step-title">You Identify a Client</div>
+        <div class="step-body">Think of one business in your network spending $1,000+ per month on Google Ads. Legal, medical, home services, financial — any industry with a real CPC. That's the only qualifying criteria.</div>
+        <div class="step-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div class="ico blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </div>
+        <div class="step-title">You Make the Introduction</div>
+        <div class="step-body">Send a quick message — we give you a field-tested one-liner for your specific professional context — or submit the referral directly through your partner dashboard. We take it from there.</div>
+        <div class="step-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div class="ico gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div class="step-title">We Analyze, Demo, and Close</div>
+        <div class="step-body">We build a custom savings projection in 24 hours using the client's real Google Ads data — actual CPC, click volume, industry. We run the demo, answer questions, and handle the agreement. You're not in the call unless you want to be.</div>
+        <div class="step-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <div class="ico green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <div class="step-title">You Earn Every Month</div>
+        <div class="step-body">From the client's first active month, you receive 15–20% of their monthly savings as a recurring commission. Every month they stay active, you earn. No time limits on your referral attribution.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CALCULATOR ══════════════ -->
+<section class="sec" id="calculator">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">Earnings Calculator</div>
+      <h2 class="sh2">Run the numbers on your network.</h2>
+      <p class="sp">Select your professional profile, adjust for your client's situation, and see what a single referral — or several — generates per month.</p>
+    </div>
+
+    <div class="calc-wrap">
+      <div class="calc-hdr">
+        <div class="calc-hdr-text">
+          <div class="h">Partner Earnings Estimator</div>
+          <div class="s">Persona presets load typical client scenarios — adjust any input to model your specific referral</div>
+        </div>
+        <div class="ptabs">
+          <button class="ptab on" onclick="setP('cpa',this)">CPA</button>
+          <button class="ptab" onclick="setP('coach',this)">Coach</button>
+          <button class="ptab" onclick="setP('lawyer',this)">Attorney</button>
+          <button class="ptab" onclick="setP('banker',this)">Banker</button>
+          <button class="ptab" onclick="setP('franchise',this)">Franchise</button>
+          <button class="ptab" onclick="setP('insurance',this)">Insurance</button>
+        </div>
+      </div>
+
+      <div class="calc-body">
+        <!-- LEFT: INPUTS -->
+        <div class="c-left">
+          <div class="ig">
+            <label class="il">Client's current cost-per-click (CPC)</label>
+            <div class="irow">
+              <span class="iunit">$</span>
+              <input type="number" id="i-cpc" class="ifield" value="45" min="10" max="500" oninput="recalc()">
+            </div>
+            <div class="ihint">Their blended average CPC across all Google Ads campaigns</div>
+          </div>
+
+          <div class="ig">
+            <label class="il">Monthly PPC clicks (total, all campaigns)</label>
+            <input type="range" class="sl" id="i-clk" min="500" max="12000" step="100" value="2000" oninput="slv(this,'lv-clk'); recalc()">
+            <div class="sl-row">
+              <span class="sl-min">500</span>
+              <span class="sl-val" id="lv-clk">2,000</span>
+              <span class="sl-max">12,000</span>
+            </div>
+            <div class="ihint">Minimum 1,000 clicks/month to qualify. Typical mid-size client: 1,000–5,000.</div>
+          </div>
+
+          <div class="ig">
+            <label class="il">Estimated capture rate</label>
+            <input type="range" class="sl" id="i-cap" min="5" max="25" step="1" value="12" oninput="slv(this,'lv-cap',true); recalc()">
+            <div class="sl-row">
+              <span class="sl-min">5%</span>
+              <span class="sl-val" id="lv-cap">12%</span>
+              <span class="sl-max">25%</span>
+            </div>
+            <div class="ihint">% of their monthly clicks intercepted via autocomplete. Conservative baseline: 10–15%</div>
+          </div>
+
+          <div class="ig">
+            <label class="il">Number of referrals at this level</label>
+            <input type="range" class="sl" id="i-ref" min="1" max="10" step="1" value="2" oninput="slv(this,'lv-ref'); recalc()">
+            <div class="sl-row">
+              <span class="sl-min">1</span>
+              <span class="sl-val" id="lv-ref">2</span>
+              <span class="sl-max">10</span>
+            </div>
+            <div class="ihint">Scale to see your total portfolio potential across multiple referrals</div>
+          </div>
+
+          <div class="ig" style="margin-bottom:0">
+            <label class="il">Commission tier</label>
+            <div class="tier-row">
+              <button id="t15" class="tier-btn on" onclick="setTier(15,this)">15% Standard</button>
+              <button id="t20" class="tier-btn" onclick="setTier(20,this)">20% Premium (3+ active clients)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: RESULTS -->
+        <div class="c-right">
+          <div style="margin-bottom:14px">
+            <div class="il" style="margin-bottom:3px">Scenario</div>
+            <div id="sc-lbl" style="font-size:13px;color:var(--offwhite);font-weight:600;line-height:1.5">CPA with mid-size business clients</div>
+          </div>
+
+          <div class="rcards">
+            <div class="rc">
+              <span class="rc-lbl">Captured Clicks</span>
+              <div class="rc-val" id="r-cap">—</div>
+              <div class="rc-sub">clicks/month per client</div>
+            </div>
+            <div class="rc hi">
+              <span class="rc-lbl">Client Saves</span>
+              <div class="rc-val" id="r-sav">—</div>
+              <div class="rc-sub">per month, per client</div>
+            </div>
+            <div class="rc gold">
+              <span class="rc-lbl">Your Commission</span>
+              <div class="rc-val" id="r-comm">—</div>
+              <div class="rc-sub">per month, per client</div>
+            </div>
+            <div class="rc">
+              <span class="rc-lbl">Portfolio Total</span>
+              <div class="rc-val" id="r-port">—</div>
+              <div class="rc-sub" id="r-port-sub">per month</div>
+            </div>
+          </div>
+
+          <div class="ann-banner">
+            <div class="ann-txt" id="ann-txt">Estimated annual earnings across <strong id="ref-lbl">2</strong> referrals</div>
+            <div>
+              <div class="ann-val" id="r-ann">—</div>
+              <div class="ann-sub">per year</div>
+            </div>
+          </div>
+
+          <div class="expl">
+            <div class="expl-lbl">How this is calculated</div>
+            <div class="expl-txt" id="expl-txt"></div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-foot">
+        * Savings calculated on captured clicks only, at 50% of the client's baseline CPC. Commission is calculated on gross profit (client payment minus $4.00 buffered wholesale cost per click). Qualifying minimum: 100 captured clicks per month / 1,000 total monthly PPC clicks. Premium tier (20%) activates when 3+ referred clients are simultaneously active.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ WHAT HAPPENS AFTER ══════════════ -->
+<section class="sec alt" id="after">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">After You Refer</div>
+      <h2 class="sh2">What we do, so you don't have to.</h2>
+    </div>
+    <div class="after-grid">
+
+      <div class="after-card">
+        <div class="after-card-h">
+          <div class="ico blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div class="after-card-title">Custom Savings Analysis — 24 Hours</div>
+        </div>
+        <div class="after-card-body">We analyze the client's Google Ads account — actual CPC, click volume by campaign, industry benchmarks — and build a personalized savings projection. No generic numbers. They see exactly what they would save, in their market, in their industry.</div>
+      </div>
+
+      <div class="after-card">
+        <div class="after-card-h">
+          <div class="ico blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.35 2 2 0 0 1 3.53 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.4a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="after-card-title">We Run the Entire Sales Process</div>
+        </div>
+        <div class="after-card-body">We schedule the demo, walk through the autocomplete mechanics and live example, field all technical questions, and close the agreement. You don't need to be on the call. Your role ends at the introduction — completely.</div>
+      </div>
+
+      <div class="after-card">
+        <div class="after-card-h">
+          <div class="ico gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="after-card-title">Full Onboarding & Account Management</div>
+        </div>
+        <div class="after-card-body">Once signed, we handle keyword research, vendor setup, term locking, and all ongoing account management. The client receives monthly performance and savings reports. Nothing is required from you after the introduction.</div>
+      </div>
+
+      <div class="after-card">
+        <div class="after-card-h">
+          <div class="ico green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </div>
+          <div class="after-card-title">Monthly Recurring Commission</div>
+        </div>
+        <div class="after-card-body">Your commission is calculated on the last business day of each calendar month and paid within 15 business days. As long as the client is active, you earn — with no caps, no time limits on referral attribution, and no minimums required.</div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-head">Typical referral timeline — day zero to first check</div>
+        <div class="tl-row">
+          <div class="tl-item done">
+            <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="tl-period">Day 0</div>
+            <div class="tl-label">You submit the referral</div>
+          </div>
+          <div class="tl-item done">
+            <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="tl-period">Day 1</div>
+            <div class="tl-label">Custom savings analysis delivered</div>
+          </div>
+          <div class="tl-item done">
+            <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="tl-period">Day 3–7</div>
+            <div class="tl-label">Demo call with client</div>
+          </div>
+          <div class="tl-item done">
+            <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="tl-period">Day 7–14</div>
+            <div class="tl-label">Agreement signed, terms locked</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9.5c0-1.1.9-2 2-2h2a2 2 0 0 1 0 4h-2a2 2 0 0 0 0 4h2a2 2 0 0 0 2-2"/></svg></div>
+            <div class="tl-period">Month 1</div>
+            <div class="tl-label">First commission paid</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+            <div class="tl-period">Ongoing</div>
+            <div class="tl-label">Monthly recurring income</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DASHBOARD (partner login via URL param) ══════════════ -->
+<section class="sec" id="dash-sec">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">Your Partner Dashboard</div>
+      <h2 class="sh2">Your referrals.<br>Your earnings.</h2>
+    </div>
+
+    <div class="dash-wrap">
+      <div class="dash-hdr">
+        <div class="dash-greet" id="d-greet">Welcome back —</div>
+        <div class="dash-badge"><div class="dash-dot"></div><span id="d-name">Partner</span></div>
+      </div>
+
+      <div class="dash-kpis">
+        <div class="dk">
+          <div class="dk-lbl">Active Referrals</div>
+          <div class="dk-val b">2</div>
+          <div class="dk-sub">clients earning commissions</div>
+        </div>
+        <div class="dk">
+          <div class="dk-lbl">In Progress</div>
+          <div class="dk-val">2</div>
+          <div class="dk-sub">analysis or review stage</div>
+        </div>
+        <div class="dk">
+          <div class="dk-lbl">This Month's Earnings</div>
+          <div class="dk-val g">$1,240</div>
+          <div class="dk-sub">estimated, billing in progress</div>
+        </div>
+        <div class="dk">
+          <div class="dk-lbl">YTD Earnings</div>
+          <div class="dk-val gold">$4,890</div>
+          <div class="dk-sub">last payment: Feb 28</div>
+        </div>
+      </div>
+
+      <div class="dash-body">
+        <div class="dash-col">
+          <div class="dash-col-h">Referral Pipeline</div>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th style="padding-right:16px">Business</th>
+                <th style="padding-right:16px">Industry</th>
+                <th style="padding-right:16px">Status</th>
+                <th style="text-align:right">Monthly Earn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding-right:16px"><strong>Coastal HVAC Co.</strong></td>
+                <td style="padding-right:16px;color:var(--muted-lt)">Home Services</td>
+                <td style="padding-right:16px"><span class="sp-pill sp-active">Active</span></td>
+                <td style="text-align:right"><span class="earn-v">$640</span></td>
+              </tr>
+              <tr>
+                <td style="padding-right:16px"><strong>Rivera Law Group</strong></td>
+                <td style="padding-right:16px;color:var(--muted-lt)">Personal Injury</td>
+                <td style="padding-right:16px"><span class="sp-pill sp-active">Active</span></td>
+                <td style="text-align:right"><span class="earn-v">$600</span></td>
+              </tr>
+              <tr>
+                <td style="padding-right:16px"><strong>Summit Financial</strong></td>
+                <td style="padding-right:16px;color:var(--muted-lt)">Finance</td>
+                <td style="padding-right:16px"><span class="sp-pill sp-analysis">Analysis</span></td>
+                <td style="text-align:right;color:var(--muted)">—</td>
+              </tr>
+              <tr>
+                <td style="padding-right:16px"><strong>Metro Dental Group</strong></td>
+                <td style="padding-right:16px;color:var(--muted-lt)">Healthcare</td>
+                <td style="padding-right:16px"><span class="sp-pill sp-review">In Review</span></td>
+                <td style="text-align:right;color:var(--muted)">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dash-col">
+          <div class="dash-col-h">Earnings — Last 6 Months</div>
+          <div class="bars">
+            <div class="bw"><div class="b" style="height:35%"></div><div class="b-lbl">Sep</div></div>
+            <div class="bw"><div class="b" style="height:48%"></div><div class="b-lbl">Oct</div></div>
+            <div class="bw"><div class="b" style="height:60%"></div><div class="b-lbl">Nov</div></div>
+            <div class="bw"><div class="b" style="height:74%"></div><div class="b-lbl">Dec</div></div>
+            <div class="bw"><div class="b" style="height:80%"></div><div class="b-lbl">Jan</div></div>
+            <div class="bw"><div class="b cur" style="height:92%"></div><div class="b-lbl">Feb</div></div>
+          </div>
+
+          <div class="dash-col-h" style="margin-top:8px">Submit a New Referral</div>
+          <div class="dash-form">
+            <div class="df"><input type="text" class="dinput" placeholder="Business name" id="d-biz"></div>
+            <div class="df"><input type="text" class="dinput" placeholder="Contact name & phone / email" id="d-contact"></div>
+            <div class="df">
+              <select class="dsel" id="d-ind">
+                <option value="">Industry...</option>
+                <option>Personal Injury Law</option>
+                <option>HVAC / Home Services</option>
+                <option>Dental / Medical</option>
+                <option>Financial Services / Insurance</option>
+                <option>Addiction Treatment</option>
+                <option>Real Estate</option>
+                <option>Roofing / Restoration</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button class="dsub" onclick="dSubmit()">Submit Referral →</button>
+            <div id="d-ok" style="display:none;margin-top:10px;font-size:12px;color:var(--green);display:flex;align-items:center;gap:6px">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Referral received — we'll be in touch within 24 hours.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ Q & A ══════════════ -->
+<section class="sec" id="faq">
+  <div class="inner">
+    <div class="lede">
+      <div class="eye">Common Questions</div>
+      <h2 class="sh2">Everything you'll be asked.<br>Answered directly.</h2>
+      <p class="sp">These are the questions prospects ask — and your clients will ask you. Know them cold.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How is this different from Google Ads?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Google Ads places your client's listing on the <em>results page</em> — after the searcher has already typed and pressed Enter. Autocomplete Takeover intercepts the search <em>before</em> the results page loads. The client's business name appears in the autocomplete dropdown as the searcher types, which Google itself appears to recommend. There is no auction, no bidding, and no competitors — the term is 100% exclusive. The cost per click is fixed at roughly half what they pay on standard Google Ads, and the price is always capped.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How does the pricing work — what does my client actually pay?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            The client pays approximately 50% of their current cost-per-click — but only for the clicks we actually capture through autocomplete. If their current Google Ads CPC is $80, they pay roughly $40 per captured click. There is a monthly price cap, so they never pay more than the agreed amount regardless of traffic volume. Fewer clicks means a lower bill. More clicks means no extra cost. There is no setup fee and no retainer.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Does this replace Google Ads entirely?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No — and that's actually a key selling point. The client's existing Google Ads campaigns continue running completely unchanged. Autocomplete Takeover is additive: it intercepts a portion of high-intent searches at the autocomplete stage, while their PPC ads still run normally on the results page. Over time many clients choose to reduce their Google Ads budget as they see the performance difference, but that's entirely their decision. We never ask them to stop anything.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What does "exclusive territory" mean exactly?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Once a client's terms are locked, no competitor can purchase the same keyword in the same geography. Ever. This is not a bidding system — it's a first-come, first-served exclusivity lock. If a personal injury firm in Los Angeles locks "personal injury lawyer Los Angeles," no other PI firm can buy that term in that market. The lock holds for as long as the client remains active. This is a critical urgency driver: terms in high-CPC markets get taken quickly once word spreads.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What industries and business types qualify?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Any business currently spending on Google Ads with a meaningful cost-per-click qualifies. The program is most powerful for high-CPC industries: personal injury and specialty law ($80–$450/click), HVAC and home services ($90–$320), water and flood damage restoration ($100–$260), medical and dental ($60–$200), financial services and insurance ($40–$180), and addiction treatment ($40–$120). The minimum threshold is 1,000 total monthly clicks or 100 captured autocomplete clicks — a low bar for anyone with an active Google Ads campaign.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How is my commission calculated — and when do I get paid?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Your commission is 15% of gross profit on each active referral (20% once you have 3 or more active clients simultaneously). Gross profit is the difference between what the client pays GrowthWave and our wholesale delivery cost. As a reference: a client paying $40/click on 200 captured clicks per month generates $8,000/month in revenue. After our costs, your 15% commission on that gross profit lands in the $600–$800/month range — per client. Commissions are calculated on the last business day of each month and paid within 15 business days. No time limits on attribution.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Do I need to be on sales calls or manage the client relationship?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No — and this is by design. Your role is the introduction only. Once you refer a contact, GrowthWave builds the custom savings analysis, schedules the demo, runs the presentation, handles objections, and closes the agreement. We manage onboarding, ongoing account management, and monthly reporting. You are welcome to join calls if you'd like, but it's never required. Your client relationship is entirely your own — we work behind the scenes.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What if my client is already working with a marketing agency?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            This is one of the strongest scenarios. Autocomplete Takeover is entirely complementary to any existing agency relationship — it doesn't touch their SEO, their PPC campaigns, their website, or anything the agency manages. In many cases their current agency will never even know about it. The client simply adds a new traffic channel at half the cost of their existing clicks. We position it as a cost reduction program, not a marketing strategy replacement, which makes it an easy yes even for clients already spending heavily with agencies.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How quickly does it start working after sign-up?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Once terms are approved and the agreement is signed, traffic typically begins within 7–14 days. The term locking and vendor setup happen in the background — the client doesn't need to do anything technical. They receive a monthly report showing captured clicks, their cost versus what they would have paid on standard Google Ads, and their savings. Most clients see measurable traffic in their first full month.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What if my client wants to cancel — what happens to my commission?</span>
+          <div class="faq-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            There are no contracts — clients can cancel at any time with 30 days' notice. If a client cancels, your commission for that client stops after their final active month. Your attribution on other active clients is unaffected. In practice, cancellations are rare: the program saves money rather than adding cost, and clients who stop lose their exclusive term lock permanently — a strong incentive to stay. The best retention pitch is built into the product itself.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /faq-list -->
+  </div>
+</section>
+
+<!-- ══════════════ TWO-STEP CTA ══════════════ -->
+<section class="cta-sec" id="cta">
+  <div class="cta-eye">Get Started</div>
+  <h2 class="cta-h">One conversation.<br>Recurring income.</h2>
+  <p class="cta-p">Let's spend 20 minutes mapping which clients in your network qualify — and what your earnings look like. No commitment, no pitch. Just your numbers.</p>
+
+  <!-- Step 1 -->
+  <div id="step1">
+    <div class="icard">
+      <div class="icard-h">Tell us about your network</div>
+      <div class="icard-s">Takes 60 seconds — and makes your intro call genuinely useful rather than generic.</div>
+      <div class="fg"><label class="fl">Your name</label><input type="text" class="fi" id="f-name" placeholder="First & last name"></div>
+      <div class="fg"><label class="fl">Your email</label><input type="email" class="fi" id="f-email" placeholder="you@yourfirm.com"></div>
+      <div class="fg">
+        <label class="fl">How would you describe yourself?</label>
+        <select class="fi" id="f-role">
+          <option value="">Select your profile...</option>
+          <option>CPA / Bookkeeper</option>
+          <option>Business Coach / Consultant</option>
+          <option>Attorney / Legal Professional</option>
+          <option>Commercial Banker / Wealth Manager</option>
+          <option>Franchise Consultant</option>
+          <option>Insurance Broker</option>
+          <option>Other Professional Network</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label class="fl">How many business clients are in your network?</label>
+        <select class="fi" id="f-size">
+          <option value="">Select a range...</option>
+          <option>Fewer than 10</option>
+          <option>10–25</option>
+          <option>25–50</option>
+          <option>50–100</option>
+          <option>100+</option>
+        </select>
+      </div>
+      <button class="fsub" onclick="toStep2()">Show Me How to Book a Call →</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Calendar -->
+  <div id="step2">
+    <div class="cal-card">
+      <div class="cal-confirm">
+        <div class="ico-sm green" style="flex-shrink:0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="cal-confirm-txt">Got it, <strong id="c-name">—</strong>. Based on your profile, you likely have 2–4 strong candidates in your network. Let's map them out together.</div>
+      </div>
+      <div class="cal-rows">
+        <div class="cal-row">
+          <div class="ico-sm blue" style="flex-shrink:0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="cal-row-text"><span class="cal-row-label">Duration</span>20 minutes — no fluff, just your numbers</div>
+        </div>
+        <div class="cal-row">
+          <div class="ico-sm blue" style="flex-shrink:0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="cal-row-text"><span class="cal-row-label">What we'll cover</span>Which clients qualify, estimated earnings, and the exact intro language for your situation</div>
+        </div>
+        <div class="cal-row">
+          <div class="ico-sm green" style="flex-shrink:0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="cal-row-text"><span class="cal-row-label">Commitment</span>None. This call creates zero obligation on your part.</div>
+        </div>
+      </div>
+      <button class="cal-book" onclick="bookCall()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule My 20-Minute Call
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">GrowthWave<b>.</b></div>
+  <div class="copy">Confidential · Partner Network · Private Invitation Only</div>
+</footer>
+
+<!-- ══════════════════════════════════════
+   JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+/* ── PERSONA PRESETS ── */
+const PERSONAS = {
+  cpa:       {label:'CPA — mid-size business clients', cpc:42, clk:1800, cap:12, ref:3},
+  coach:     {label:'Business coach — growth-stage SMB clients', cpc:38, clk:2200, cap:11, ref:2},
+  lawyer:    {label:'Attorney — personal injury & business law', cpc:95, clk:1200, cap:10, ref:2},
+  banker:    {label:'Commercial banker — HNW business owners', cpc:65, clk:2800, cap:13, ref:4},
+  franchise: {label:'Franchise consultant — multi-location brands', cpc:28, clk:5000, cap:14, ref:3},
+  insurance: {label:'Insurance broker — SMB book of business', cpc:35, clk:2400, cap:11, ref:4},
+};
+let tier = 15;
+
+function setP(key, btn) {
+  document.querySelectorAll('.ptab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const p = PERSONAS[key];
+  document.getElementById('i-cpc').value = p.cpc;
+  setSlider('i-clk','lv-clk', p.clk, false);
+  setSlider('i-cap','lv-cap', p.cap, true);
+  setSlider('i-ref','lv-ref', p.ref, false);
+  document.getElementById('sc-lbl').textContent = p.label;
+  recalc();
+}
+
+function setSlider(id, lbl, val, pct) {
+  const el = document.getElementById(id);
+  el.value = val;
+  document.getElementById(lbl).textContent = pct ? val+'%' : Number(val).toLocaleString();
+}
+
+function slv(el, lbl, pct=false) {
+  const v = parseInt(el.value);
+  document.getElementById(lbl).textContent = pct ? v+'%' : v.toLocaleString();
+}
+
+function setTier(pct) {
+  tier = pct;
+  document.getElementById('t15').classList.toggle('on', pct===15);
+  document.getElementById('t20').classList.toggle('on', pct===20);
+  recalc();
+}
+
+const fmt = n => '$' + Math.round(n).toLocaleString();
+
+function recalc() {
+  const cpc  = parseFloat(document.getElementById('i-cpc').value) || 0;
+  const clk  = parseInt(document.getElementById('i-clk').value) || 0;
+  const cap  = parseInt(document.getElementById('i-cap').value) || 0;
+  const refs = parseInt(document.getElementById('i-ref').value) || 1;
+
+  // ── Core model (matches spo-projection-v11-3-source.jsx calcC()) ──
+  const WHOLESALE = 4.00;      // buffered wholesale cost/click
+  const SAV_PCT   = 0.50;      // client saves 50% of their CPC
+
+  const captured   = Math.round(clk * (cap/100));
+  const spoCPC     = cpc * (1 - SAV_PCT);          // discounted rate client pays
+  const clientSav  = captured * cpc - captured * spoCPC; // savings on captured clicks
+  const gw_rev     = captured * spoCPC;             // what client pays GW
+  const gw_cost    = captured * WHOLESALE;          // wholesale
+  const gp         = gw_rev - gw_cost;              // gross profit
+  const commission = gp * (tier/100);
+
+  const portMo  = commission * refs;
+  const portAnn = portMo * 12;
+
+  if (captured < 100) {
+    ['r-cap','r-sav','r-comm','r-port','r-ann'].forEach(id => document.getElementById(id).textContent = '—');
+    document.getElementById('r-port-sub').textContent = 'per month';
+    document.getElementById('expl-txt').innerHTML =
+      '<span style="display:flex;align-items:flex-start;gap:6px;color:#ef4444"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Below minimum — this scenario delivers fewer than 100 captured clicks/month. Increase total clicks or capture rate.</span></span>';
+    return;
+  }
+
+  document.getElementById('r-cap').textContent   = captured.toLocaleString();
+  document.getElementById('r-sav').textContent   = fmt(clientSav);
+  document.getElementById('r-comm').textContent  = fmt(commission);
+  document.getElementById('r-port').textContent  = fmt(portMo);
+  document.getElementById('r-port-sub').textContent = `per month (${refs} referral${refs>1?'s':''})`;
+  document.getElementById('r-ann').textContent   = fmt(portAnn);
+  document.getElementById('ref-lbl').textContent = refs;
+
+  document.getElementById('expl-txt').innerHTML =
+    `Client runs <strong style="color:var(--offwhite)">${clk.toLocaleString()} clicks/mo</strong> at <strong style="color:var(--offwhite)">${fmt(cpc)}/click</strong>. ` +
+    `We intercept <strong style="color:var(--electric)">${captured.toLocaleString()}</strong> of those via autocomplete at <strong style="color:var(--offwhite)">${fmt(spoCPC)}/click</strong> (50% off). ` +
+    `Client saves <strong style="color:var(--electric)">${fmt(clientSav)}/mo</strong> on captured clicks. ` +
+    `After $${WHOLESALE} wholesale cost: gross profit = <strong style="color:var(--offwhite)">${fmt(gp)}</strong>. ` +
+    `Your <strong style="color:var(--gold-lt)">${tier}% commission = ${fmt(commission)}/mo per client</strong>.`;
+}
+
+/* ── PARTNER URL PARAM LOGIN ── */
+const CODES = { 'GROW01':'Partner A','GROW02':'Partner B','ALPHA1':'Alpha Partner','SMITH1':'Sarah Smith','JONES1':'Michael Jones' };
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  const c = (p.get('partner')||'').toUpperCase();
+  if (CODES[c]) {
+    const name = CODES[c];
+    document.getElementById('dash-sec').classList.add('on');
+    document.getElementById('d-greet').textContent = 'Welcome back, ' + name.split(' ')[0] + '.';
+    document.getElementById('d-name').textContent  = name + ' · ' + c;
+  }
+})();
+
+function dSubmit() {
+  const biz = document.getElementById('d-biz').value.trim();
+  const con = document.getElementById('d-contact').value.trim();
+  if (!biz || !con) { alert('Please enter business name and contact info.'); return; }
+  const ok = document.getElementById('d-ok');
+  ok.style.display = 'flex';
+  document.getElementById('d-biz').value = '';
+  document.getElementById('d-contact').value = '';
+  document.getElementById('d-ind').value = '';
+  setTimeout(() => ok.style.display = 'none', 5000);
+}
+
+/* ── TWO-STEP CTA ── */
+function toStep2() {
+  const name  = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const role  = document.getElementById('f-role').value;
+  if (!name || !email || !role) { alert('Please complete all fields to continue.'); return; }
+  document.getElementById('c-name').textContent = name.split(' ')[0];
+  document.getElementById('step1').style.display = 'none';
+  const s2 = document.getElementById('step2');
+  s2.classList.add('on');
+  s2.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+function bookCall() {
+  // Replace with: window.open('https://calendly.com/your-link', '_blank');
+  alert('Replace bookCall() with your Calendly or Cal.com scheduling link.');
+}
+
+function goCTA() {
+  document.getElementById('cta').scrollIntoView({ behavior:'smooth' });
+}
+
+/* ══════════════════════════════════════════
+   LIVE DEMO — TYPEWRITER + CITY SWITCHER
+══════════════════════════════════════════ */
+const DEMO_CITIES = {
+  la: {
+    url:      'google.com',
+    fullText: 'personal injury lawyer los angeles',
+    typeStop: 28, // chars shown when dropdown fires
+    biz:      'Goldman &amp; Klein — Personal Injury LA',
+    thumb:    'GK',
+    thumbBg:  'linear-gradient(135deg,#e8d49a,#c9a84c)',
+    s1: 'personal injury lawyer los angeles',
+    s2: 'personal injury lawyer los angeles free consultation',
+    s3: 'personal injury lawyer los angeles reviews',
+    s4: 'personal injury attorney los angeles',
+    s5: 'best pi lawyer los angeles 2025',
+    serpTerm: 'Goldman &amp; Klein — Personal Injury LA',
+    orgUrl:   'goldmanklein.com › about',
+    orgTitle: 'Goldman &amp; Klein — Top-Rated PI Attorneys Los Angeles',
+    orgDesc:  'Award-winning PI firm. Free consultation. No fee unless we win.',
+    fb:       'goldmanklein',
+    fbTitle:  'Goldman &amp; Klein | Facebook',
+    yelp:     'Goldman &amp; Klein — Yelp Reviews',
+    kpImg:    'linear-gradient(135deg,#e8d49a,#c9a84c)',
+    kpName:   'Goldman &amp; Klein LLP',
+    kpType:   'Personal Injury Attorney · Los Angeles',
+    addr:     '350 S Grand Ave, LA, CA',
+    dot:      'GK', dotBg:'#faf5e6', dotBrd:'#e8d49a', dotClr:'#c9a84c',
+  },
+  denver: {
+    url:      'google.com',
+    fullText: 'denver hvac repair near me',
+    typeStop: 21,
+    biz:      'Colorado Climate Control — Denver HVAC',
+    thumb:    'CC',
+    thumbBg:  'linear-gradient(135deg,#7ec8f0,#0e7dc2)',
+    s1: 'denver hvac repair near me',
+    s2: 'denver hvac emergency repair',
+    s3: 'denver hvac companies reviews',
+    s4: 'best hvac denver colorado',
+    s5: 'denver ac repair same day',
+    serpTerm: 'Colorado Climate Control — Denver HVAC',
+    orgUrl:   'coloradoclimate.com › about',
+    orgTitle: 'Colorado Climate Control — Denver HVAC &amp; AC Repair',
+    orgDesc:  'Same-day HVAC service. Licensed &amp; insured. 24/7 emergency. Free estimates.',
+    fb:       'coloradoclimate',
+    fbTitle:  'Colorado Climate Control | Facebook',
+    yelp:     'Colorado Climate Control — Yelp',
+    kpImg:    'linear-gradient(135deg,#7ec8f0,#0e7dc2)',
+    kpName:   'Colorado Climate Control LLC',
+    kpType:   'HVAC Contractor · Denver, CO',
+    addr:     '1845 Blake St, Denver, CO',
+    dot: 'CC', dotBg:'#e8f1fb', dotBrd:'#b8d4f8', dotClr:'#0e7dc2',
+  },
+  miami: {
+    url:      'google.com',
+    fullText: 'miami water damage restoration',
+    typeStop: 25,
+    biz:      'Restore Miami — Water &amp; Flood Damage',
+    thumb:    'RM',
+    thumbBg:  'linear-gradient(135deg,#c4adee,#7c5cbf)',
+    s1: 'miami water damage restoration',
+    s2: 'miami water damage emergency',
+    s3: 'miami flood restoration near me',
+    s4: 'water damage miami dade',
+    s5: 'best water restoration miami',
+    serpTerm: 'Restore Miami — Water &amp; Flood Damage',
+    orgUrl:   'restoremiami.com › services',
+    orgTitle: 'Restore Miami — Water Damage &amp; Flood Restoration',
+    orgDesc:  '24/7 emergency water damage in Miami-Dade. Insurance billing. Free inspection.',
+    fb:       'restoremiami',
+    fbTitle:  'Restore Miami | Facebook',
+    yelp:     'Restore Miami — Yelp Reviews',
+    kpImg:    'linear-gradient(135deg,#c4adee,#7c5cbf)',
+    kpName:   'Restore Miami Inc.',
+    kpType:   'Water Damage Restoration · Miami, FL',
+    addr:     '8400 NW 25th St, Miami, FL',
+    dot: 'RM', dotBg:'#f3eef9', dotBrd:'#c4adee', dotClr:'#7c5cbf',
+  }
+};
+
+let demoCity    = 'la';
+let demoPart    = 1;
+let typeTimer   = null;
+let typePhase   = 'typing';   // 'typing' | 'waiting' | 'deleting' | 'done'
+let typeIdx     = 0;
+const CHAR_DELAY    = 72;
+const WAIT_AFTER    = 900;
+const DELETE_DELAY  = 38;
+
+function applyCity(key) {
+  const d = DEMO_CITIES[key];
+  // Thumbnail
+  const th = document.getElementById('d-thumb');
+  if (th) { th.textContent = d.thumb; th.style.background = d.thumbBg; }
+  // Business name in dropdown
+  const biz = document.getElementById('d-biz');
+  if (biz) biz.innerHTML = d.biz;
+  // Suggestions
+  ['s1','s2','s3','s4','s5'].forEach(k => {
+    const el = document.getElementById('d-' + k);
+    if (el) el.textContent = d[k];
+  });
+  // SERP
+  const serpTerm = document.getElementById('d-serp-term');
+  if (serpTerm) serpTerm.innerHTML = d.serpTerm;
+  const orgUrl = document.getElementById('d-org-url');
+  if (orgUrl) orgUrl.textContent = d.orgUrl.replace(/&amp;/g,'&');
+  const orgTitle = document.getElementById('d-org-title');
+  if (orgTitle) orgTitle.innerHTML = d.orgTitle;
+  const orgDesc = document.getElementById('d-org-desc');
+  if (orgDesc) orgDesc.textContent = d.orgDesc.replace(/&amp;/g,'&');
+  const fb = document.getElementById('d-fb');
+  if (fb) fb.textContent = d.fb;
+  const fbTitle = document.getElementById('d-fb-title');
+  if (fbTitle) fbTitle.innerHTML = d.fbTitle;
+  const yelp = document.getElementById('d-yelp');
+  if (yelp) yelp.innerHTML = d.yelp;
+  const kpImg = document.getElementById('d-kp-img');
+  if (kpImg) { kpImg.style.background = d.kpImg; kpImg.textContent = d.kpName.replace(/&amp;/g,'&'); }
+  const kpName = document.getElementById('d-kp-name');
+  if (kpName) kpName.innerHTML = d.kpName;
+  const kpType = document.getElementById('d-kp-type');
+  if (kpType) kpType.textContent = d.kpType;
+  const addr = document.getElementById('d-addr');
+  if (addr) addr.textContent = d.addr;
+  const dot = document.getElementById('d-dot');
+  if (dot) { dot.textContent = d.dot; dot.style.background = d.dotBg; dot.style.borderColor = d.dotBrd; dot.style.color = d.dotClr; }
+}
+
+function startTypewriter() {
+  if (typeTimer) clearTimeout(typeTimer);
+  const d      = DEMO_CITIES[demoCity];
+  const full   = d.fullText;
+  const stop   = d.typeStop;
+  const el     = document.getElementById('d-typing');
+  const drop   = document.getElementById('ac-drop');
+  if (!el) return;
+
+  typeIdx   = 0;
+  typePhase = 'typing';
+
+  // Hide dropdown initially
+  if (drop) drop.style.opacity = '0';
+
+  function tick() {
+    if (typePhase === 'typing') {
+      typeIdx++;
+      el.innerHTML = full.slice(0, typeIdx) + '<span class="cursor"></span>';
+
+      if (typeIdx === stop) {
+        // Dropdown fires — show it
+        if (drop) {
+          drop.style.opacity = '1';
+          drop.style.transition = 'opacity .25s';
+        }
+      }
+
+      if (typeIdx >= full.length) {
+        typePhase = 'waiting';
+        typeTimer = setTimeout(tick, WAIT_AFTER);
+      } else {
+        typeTimer = setTimeout(tick, CHAR_DELAY);
+      }
+
+    } else if (typePhase === 'waiting') {
+      typePhase = 'deleting';
+      typeTimer = setTimeout(tick, DELETE_DELAY);
+
+    } else if (typePhase === 'deleting') {
+      typeIdx--;
+      el.innerHTML = full.slice(0, typeIdx) + '<span class="cursor"></span>';
+
+      if (typeIdx <= 0) {
+        // Hide dropdown and restart
+        if (drop) drop.style.opacity = '0';
+        typePhase = 'typing';
+        typeTimer = setTimeout(tick, 600);
+      } else {
+        // Hide dropdown when backspacing past trigger point
+        if (typeIdx < stop && drop) drop.style.opacity = '0';
+        typeTimer = setTimeout(tick, DELETE_DELAY);
+      }
+    }
+  }
+
+  typeTimer = setTimeout(tick, 400);
+}
+
+function setCity(key, btn) {
+  demoCity = key;
+  document.querySelectorAll('.dcity-btn').forEach(b => b.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  applyCity(key);
+  // If on part 1, restart typewriter for new city
+  if (demoPart === 1) startTypewriter();
+}
+
+function showPart(n) {
+  demoPart = n;
+  const p1   = document.getElementById('dp1');
+  const p2   = document.getElementById('dp2');
+  const b1   = document.getElementById('dnb1');
+  const b2   = document.getElementById('dnb2');
+  if (!p1 || !p2) return;
+
+  if (n === 1) {
+    p1.style.display = 'block';
+    p2.style.display = 'none';
+    p2.classList.remove('serp-visible');
+    b1.classList.add('on');    b2.classList.remove('on');
+    b2.classList.add('pulse-demo');
+    startTypewriter();
+  } else {
+    p1.style.display = 'none';
+    p2.style.display = 'block';
+    if (typeTimer) clearTimeout(typeTimer);
+    requestAnimationFrame(() => p2.classList.add('serp-visible'));
+    b2.classList.add('on');    b1.classList.remove('on');
+    b2.classList.remove('pulse-demo');
+    // Auto-scroll the SERP to reveal full page domination
+    setTimeout(() => {
+      const wrap = document.getElementById('serp-scroll-wrap');
+      if (wrap) {
+        const total = wrap.scrollHeight - wrap.clientHeight;
+        const duration = 3800;
+        const start = performance.now();
+        function scrollStep(ts) {
+          const elapsed = ts - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // ease-in-out cubic
+          const eased = progress < .5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+          wrap.scrollTop = eased * total;
+          if (progress < 1) requestAnimationFrame(scrollStep);
+        }
+        requestAnimationFrame(scrollStep);
+      }
+    }, 500);
+  }
+}
+
+/* ── FAQ TOGGLE ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  // Open this one if it was closed
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── INIT ── */
+recalc();
+applyCity('la');
+startTypewriter();
+</script>
+</body>
+</html>
